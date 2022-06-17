@@ -7,7 +7,6 @@
 namespace winrt::Spacious::implementation {
 	struct MainWindow: MainWindowT<MainWindow> {
 		private:
-			static MainWindow *thisWindow;
 			static LRESULT handleWindowMessage(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
 			static WNDPROC oldHandler;
 		public:

@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 
 #include <Microsoft.UI.Xaml.Window.h>
+#include <winrt/Microsoft.Windows.ApplicationModel.Resources.h>
 
 #include "MainWindow.xaml.h"
 #if __has_include("MainWindow.g.cpp")
@@ -8,15 +9,16 @@
 #endif
 
 using namespace winrt::Microsoft::UI::Xaml;
+using namespace winrt::Microsoft::Windows::ApplicationModel::Resources;
 
 namespace winrt::Spacious::implementation {
-	MainWindow *MainWindow::thisWindow = nullptr;
 	WNDPROC MainWindow::oldHandler = nullptr;
 	
 	MainWindow::MainWindow() {
-		thisWindow = this;
 		InitializeComponent();
-		Title(L"Spacious");
+		
+		ResourceLoader resourceLoader;
+		Title(resourceLoader.GetString(L"AppTitleName"));
 
 		// Set minimum window size.
 		auto windowNative = try_as<IWindowNative>();

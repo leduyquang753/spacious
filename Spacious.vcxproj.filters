@@ -17,50 +17,21 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Assets\Wide310x150Logo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\StoreLogo.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\Square150x150Logo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\Square44x44Logo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\SplashScreen.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\LockScreenLogo.scale-200.png">
-      <Filter>Assets</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{33355f8f-abfb-4b83-8be8-fc3e36b19ea8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Strings">
-      <UniqueIdentifier>{2cb641af-5343-44b1-9c54-a32f4fdc7d13}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Strings\en-US">
-      <UniqueIdentifier>{4a4c1be9-6d6d-4f35-ad4a-550c5ce1c4ef}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Resources.resw">
+    <Filter Include="Strings">
+      <UniqueIdentifier>{6ec10883-e53c-4398-8c11-74e1c321fcee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Strings\en-US">
+      <UniqueIdentifier>{6246e163-4554-43f3-8f80-79e9109ee5f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\en-US\Resources.resw">
       <Filter>Strings\en-US</Filter>
     </PRIResource>
   </ItemGroup>
