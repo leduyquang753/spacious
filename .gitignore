@@ -1,0 +1,5 @@
+/.vs
+/Generated files
+/packages
+/x64
+*.swp
