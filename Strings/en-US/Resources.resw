@@ -120,10 +120,16 @@
   <data name="AppTitleName" xml:space="preserve">
     <value>Spacious</value>
   </data>
+  <data name="ListPage_ReminderList_Header.Text" xml:space="preserve">
+    <value>Reminders</value>
+  </data>
   <data name="MainWindow_MainNavigationView_List.Content" xml:space="preserve">
-    <value>List</value>
+    <value>Reminders</value>
   </data>
   <data name="MainWindow_MainNavigationView_Settings.Content" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
+    <value>Select a reminder from the list to the left to see its details.</value>
   </data>
 </root>

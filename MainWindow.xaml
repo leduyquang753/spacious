@@ -12,11 +12,13 @@
 		PaneDisplayMode="LeftCompact"
 		IsBackButtonVisible="Collapsed"
 		IsSettingsVisible="False"
-		OpenPaneLength="120"
+		OpenPaneLength="150"
+		SelectionChanged="onNavigationChanged"
 	>
 		<NavigationView.MenuItems>
 			<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" IsSelected="True"/>
 			<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings"/>
 		</NavigationView.MenuItems>
+		<Frame x:Name="MainFrame"/>
 	</NavigationView>
 </Window>

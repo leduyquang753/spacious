@@ -1,0 +1,11 @@
+namespace Spacious {
+	struct ReminderEntry {
+		String name;
+	};
+	
+	[default_interface]
+	runtimeclass ListPage: Microsoft.UI.Xaml.Controls.Page {
+		Windows.Foundation.Collections.IVector<IInspectable> List {get;};
+		ListPage();
+	};
+}

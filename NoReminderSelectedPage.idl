@@ -1,0 +1,6 @@
+namespace Spacious {
+	[default_interface]
+	runtimeclass NoReminderSelectedPage : Microsoft.UI.Xaml.Controls.Page {
+		NoReminderSelectedPage();
+	}
+}

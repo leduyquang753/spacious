@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <windows.h>
+#include <winrt/Microsoft.UI.Xaml.Controls.h>
 
 #include "MainWindow.g.h"
 
@@ -11,6 +12,7 @@ namespace winrt::Spacious::implementation {
 			static WNDPROC oldHandler;
 		public:
 			MainWindow();
+			void onNavigationChanged(const IInspectable &source, const winrt::Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs &arguments);
 	};
 }
 
