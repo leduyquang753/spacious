@@ -120,6 +120,9 @@
   <data name="AppTitleName" xml:space="preserve">
     <value>Spacious</value>
   </data>
+  <data name="ListPage_Add.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Add reminder</value>
+  </data>
   <data name="ListPage_ReminderList_Header.Text" xml:space="preserve">
     <value>Reminders</value>
   </data>
@@ -132,8 +135,17 @@
   <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
     <value>Select a reminder from the list to the left to see its details.</value>
   </data>
-  <data name="ReminderDetailsPage_Header.Text" xml:space="preserve">
-    <value>Reminder details</value>
+  <data name="ReminderDetailsPage_Create.Content" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="ReminderDetailsPage_Delete.Content" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ReminderDetailsPage_Name.PlaceholderText" xml:space="preserve">
+    <value>Reminder name</value>
+  </data>
+  <data name="ReminderDetailsPage_NotificationText.Header" xml:space="preserve">
+    <value>Notification text</value>
   </data>
   <data name="ReminderDetailsPage_RecurringPeriod.Text" xml:space="preserve">
     <value>Recurring period</value>
@@ -146,6 +158,12 @@
   </data>
   <data name="ReminderDetailsPage_RecurringPeriod_Years.Content" xml:space="preserve">
     <value>years</value>
+  </data>
+  <data name="ReminderDetailsPage_RevertChanges.Content" xml:space="preserve">
+    <value>Revert changes</value>
+  </data>
+  <data name="ReminderDetailsPage_Save.Content" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="ReminderDetailsPage_StartDate.Text" xml:space="preserve">
     <value>Start date</value>

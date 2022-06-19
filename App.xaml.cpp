@@ -33,7 +33,10 @@ void winrt::Spacious::implementation::App::OnLaunched(winrt::Microsoft::UI::Xaml
 	/* Notification routine.
 	ComPtr<IXmlDocument> doc;
 	DesktopNotificationManagerCompat::CreateXmlDocumentFromString(
-		L"<toast scenario=\"reminder\"><visual><binding template = 'ToastGeneric'><text>Reminder</text><text>Check out the latest GCC release.</text></binding></visual><commands><command id=\"dismiss\"/></commands></toast>",
+		L"<toast scenario=\"reminder\">"
+			"<visual><binding template = 'ToastGeneric'><text>Reminder</text><text>Check out the latest GCC release.</text></binding></visual>"
+			"<commands><command id = \"dismiss\"/></commands>"
+		"</toast>",
 		&doc
 	);
 	ComPtr<IToastNotifier> notifier;

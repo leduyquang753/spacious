@@ -7,33 +7,64 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 >
-	<ScrollViewer>
-		<ScrollViewer.TopHeader>
-			<TextBlock
-				x:Uid="ReminderDetailsPage_Header"
-				Style="{StaticResource SubtitleTextBlockStyle}"
-				Margin="24,16,24,8"
-			/>
-		</ScrollViewer.TopHeader>
-		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Margin="24,0,24,0">
-			<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type"/>
-			<TextBlock x:Uid="ReminderDetailsPage_StartDate" Margin="0,0,0,8"/>
-			<StackPanel Orientation="Horizontal">
-				<NumberBox x:Name="StartDay" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="31" SmallChange="1" LargeChange="10" Value="1"/>
-				<TextBlock Text="/" VerticalAlignment="Center"/>
-				<NumberBox x:Name="StartMonth" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="12" SmallChange="1" LargeChange="10" Value="1"/>
-				<TextBlock Text="/" VerticalAlignment="Center"/>
-				<NumberBox x:Name="StartYear" SpinButtonPlacementMode="Compact" Minimum="1900" Maximum="2100" SmallChange="1" LargeChange="10" Value="2022"/>
+	<Grid RowDefinitions="Auto, *, Auto">
+		<TextBox Grid.Row="0" x:Name="Name" x:Uid="ReminderDetailsPage_Name" FontWeight="SemiBold" Margin="13,8,13,8"/>
+		<ScrollViewer Grid.Row="1">
+			<StackPanel Orientation="Vertical" Margin="24,0,24,0">
+				<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type"/>
+				<TextBlock x:Uid="ReminderDetailsPage_StartDate" Margin="0,0,0,8"/>
+				<StackPanel Orientation="Horizontal">
+					<NumberBox x:Name="StartDay" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="31" SmallChange="1" LargeChange="10" Value="1"/>
+					<TextBlock Text="/" VerticalAlignment="Center" Margin="4,0,4,0"/>
+					<NumberBox x:Name="StartMonth" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="12" SmallChange="1" LargeChange="10" Value="1"/>
+					<TextBlock Text="/" VerticalAlignment="Center" Margin="4,0,4,0"/>
+					<NumberBox x:Name="StartYear" SpinButtonPlacementMode="Compact" Minimum="1900" Maximum="2100" SmallChange="1" LargeChange="10" Value="2022"/>
+				</StackPanel>
+				<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
+				<StackPanel Orientation="Horizontal">
+					<NumberBox x:Name="RecurringAmount" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="1000" SmallChange="1" LargeChange="10" Value="1"/>
+					<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
+						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
+						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
+						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>
+					</ComboBox>
+				</StackPanel>
+				<Grid ColumnDefinitions="*" Margin="0,8,0,0">
+					<TextBox Grid.Column="0" x:Name="NotificationText" x:Uid="ReminderDetailsPage_NotificationText" PlaceholderText="Reminder name"/>
+				</Grid>
 			</StackPanel>
-			<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
-			<StackPanel Orientation="Horizontal">
-				<NumberBox x:Name="RecurringAmount" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="1000" SmallChange="1" LargeChange="10" Value="1"/>
-				<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
-					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
-					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
-					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>
-				</ComboBox>
+		</ScrollViewer>
+		<Grid Grid.Row="2" ColumnDefinitions="*, Auto" Margin="24,8,24,16">
+			<TextBlock Grid.Column="0" Text="You must specify a name for the reminder." Foreground="Red" TextTrimming="WordEllipsis" VerticalAlignment="Center"/>
+			<StackPanel Grid.Column="1" Orientation="Horizontal">
+				<StackPanel Orientation="Horizontal">
+					<Button x:Uid="ReminderDetailsPage_Create" Style="{StaticResource AccentButtonStyle}" Margin="8,0,0,0"/>
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<HyperlinkButton x:Uid="ReminderDetailsPage_RevertChanges" Margin="8,0,0,0"/>
+					<Button x:Uid="ReminderDetailsPage_Save" Style="{StaticResource AccentButtonStyle}" Margin="8,0,0,0"/>
+					<Button x:Uid="ReminderDetailsPage_Delete" Foreground="White" Background="Red" Margin="8,0,0,0">
+						<Button.Resources>
+							<ResourceDictionary>
+								<ResourceDictionary.ThemeDictionaries>
+									<ResourceDictionary x:Key="Dark">
+										<SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+										<SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FFFF4040"/>
+										<SolidColorBrush x:Key="ButtonForegroundPressed" Color="#C0FFFFFF"/>
+										<SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FFFF6060"/>
+									</ResourceDictionary>
+									<ResourceDictionary x:Key="Light">
+										<SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="White"/>
+										<SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#FFFF4040"/>
+										<SolidColorBrush x:Key="ButtonForegroundPressed" Color="#C0FFFFFF"/>
+										<SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#FFFF6060"/>
+									</ResourceDictionary>
+								</ResourceDictionary.ThemeDictionaries>
+							</ResourceDictionary>
+						</Button.Resources>
+					</Button>
+				</StackPanel>
 			</StackPanel>
-		</StackPanel>
-	</ScrollViewer>
+		</Grid>
+	</Grid>
 </UserControl>

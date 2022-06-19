@@ -18,11 +18,16 @@
 		<SplitView.Pane>
 			<ListView x:Name="ReminderList">
 				<ListView.Header>
-					<TextBlock
-						x:Uid="ListPage_ReminderList_Header"
-						Style="{StaticResource TitleTextBlockStyle}"
-						Margin="18,8,8,8"
-					/>
+					<Grid ColumnDefinitions="*, Auto" Margin="16,8,16,8">
+						<TextBlock
+							Grid.Column="0"
+							x:Uid="ListPage_ReminderList_Header"
+							Style="{StaticResource TitleTextBlockStyle}"
+						/>
+						<Button Grid.Column="1" x:Uid="ListPage_Add" VerticalAlignment="Center">
+							<FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;"/>
+						</Button>
+					</Grid>
 				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate x:DataType="data:ReminderEntry">
