@@ -12,7 +12,10 @@ namespace winrt::Spacious::implementation {
 			static WNDPROC oldHandler;
 		public:
 			MainWindow();
-			void onNavigationChanged(const IInspectable &source, const winrt::Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs &arguments);
+			void onNavigationChanged(
+				const winrt::Windows::Foundation::IInspectable &source,
+				const winrt::Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs &arguments
+			);
 	};
 }
 

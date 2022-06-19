@@ -1,0 +1,39 @@
+﻿<UserControl
+	x:Class="Spacious.ReminderDetailsPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Spacious"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+>
+	<ScrollViewer>
+		<ScrollViewer.TopHeader>
+			<TextBlock
+				x:Uid="ReminderDetailsPage_Header"
+				Style="{StaticResource SubtitleTextBlockStyle}"
+				Margin="24,16,24,8"
+			/>
+		</ScrollViewer.TopHeader>
+		<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Vertical" Margin="24,0,24,0">
+			<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type"/>
+			<TextBlock x:Uid="ReminderDetailsPage_StartDate" Margin="0,0,0,8"/>
+			<StackPanel Orientation="Horizontal">
+				<NumberBox x:Name="StartDay" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="31" SmallChange="1" LargeChange="10" Value="1"/>
+				<TextBlock Text="/" VerticalAlignment="Center"/>
+				<NumberBox x:Name="StartMonth" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="12" SmallChange="1" LargeChange="10" Value="1"/>
+				<TextBlock Text="/" VerticalAlignment="Center"/>
+				<NumberBox x:Name="StartYear" SpinButtonPlacementMode="Compact" Minimum="1900" Maximum="2100" SmallChange="1" LargeChange="10" Value="2022"/>
+			</StackPanel>
+			<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
+			<StackPanel Orientation="Horizontal">
+				<NumberBox x:Name="RecurringAmount" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="1000" SmallChange="1" LargeChange="10" Value="1"/>
+				<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
+					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
+					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
+					<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>
+				</ComboBox>
+			</StackPanel>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

@@ -115,6 +115,7 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Foreign\DesktopNotificationManagerCompat.h" />
     <ClInclude Include="ListPage.xaml.h">
       <DependentUpon>ListPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -123,12 +124,17 @@
       <DependentUpon>NoReminderSelectedPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="NotificationActivator.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="App.xaml.h">
       <DependentUpon>App.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="MainWindow.xaml.h">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="ReminderDetailsPage.xaml.h">
+      <DependentUpon>ReminderDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -140,11 +146,15 @@
     <Page Include="NoReminderSelectedPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ReminderDetailsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Foreign\DesktopNotificationManagerCompat.cpp" />
     <ClCompile Include="ListPage.xaml.cpp">
       <DependentUpon>ListPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -157,6 +167,7 @@
       <DependentUpon>NoReminderSelectedPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="NotificationActivator.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|arm64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|arm64'">Create</PrecompiledHeader>
@@ -164,6 +175,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ReminderDetailsPage.xaml.cpp">
+      <DependentUpon>ReminderDetailsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +196,10 @@
     </Midl>
     <Midl Include="NoReminderSelectedPage.idl">
       <DependentUpon>NoReminderSelectedPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ReminderDetailsPage.idl">
+      <DependentUpon>ReminderDetailsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
   </ItemGroup>

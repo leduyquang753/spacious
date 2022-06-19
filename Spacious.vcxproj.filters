@@ -7,6 +7,7 @@
     <Page Include="MainWindow.xaml" />
     <Page Include="ListPage.xaml" />
     <Page Include="NoReminderSelectedPage.xaml" />
+    <Page Include="ReminderDetailsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -16,9 +17,17 @@
   <ItemGroup>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Foreign\DesktopNotificationManagerCompat.cpp">
+      <Filter>Foreign</Filter>
+    </ClCompile>
+    <ClCompile Include="NotificationActivator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Foreign\DesktopNotificationManagerCompat.h">
+      <Filter>Foreign</Filter>
+    </ClInclude>
+    <ClInclude Include="NotificationActivator.h" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />
@@ -32,6 +41,9 @@
     </Filter>
     <Filter Include="Strings\en-US">
       <UniqueIdentifier>{6246e163-4554-43f3-8f80-79e9109ee5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Foreign">
+      <UniqueIdentifier>{6b513f85-7673-4cca-af90-fc1415a9d673}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

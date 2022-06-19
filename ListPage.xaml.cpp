@@ -13,7 +13,7 @@ namespace winrt::Spacious::implementation {
 
 		ReminderList().ItemsSource(List());
 
-		DetailsPane().Navigate(winrt::xaml_typename<NoReminderSelectedPage>());
+		DetailsPane().Navigate(winrt::xaml_typename<ReminderDetailsPage>());
 	}
 	
 	IVector<IInspectable> ListPage::List() {

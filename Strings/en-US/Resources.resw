@@ -132,4 +132,31 @@
   <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
     <value>Select a reminder from the list to the left to see its details.</value>
   </data>
+  <data name="ReminderDetailsPage_Header.Text" xml:space="preserve">
+    <value>Reminder details</value>
+  </data>
+  <data name="ReminderDetailsPage_RecurringPeriod.Text" xml:space="preserve">
+    <value>Recurring period</value>
+  </data>
+  <data name="ReminderDetailsPage_RecurringPeriod_Days.Content" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="ReminderDetailsPage_RecurringPeriod_Months.Content" xml:space="preserve">
+    <value>months</value>
+  </data>
+  <data name="ReminderDetailsPage_RecurringPeriod_Years.Content" xml:space="preserve">
+    <value>years</value>
+  </data>
+  <data name="ReminderDetailsPage_StartDate.Text" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="ReminderDetailsPage_Type.Header" xml:space="preserve">
+    <value>Reminder type</value>
+  </data>
+  <data name="ReminderDetailsPage_Type.OffContent" xml:space="preserve">
+    <value>Non-recurring</value>
+  </data>
+  <data name="ReminderDetailsPage_Type.OnContent" xml:space="preserve">
+    <value>Recurring</value>
+  </data>
 </root>
