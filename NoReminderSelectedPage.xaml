@@ -11,6 +11,7 @@
 		x:Uid="NoReminderSelectedPage_Text"
 		HorizontalAlignment="Left"
 		VerticalAlignment="Top"
-		Margin="16,16,0,0"
+		TextWrapping="Wrap"
+		Margin="16,16,16,16"
 	/>
 </UserControl>

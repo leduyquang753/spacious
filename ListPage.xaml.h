@@ -10,9 +10,14 @@ namespace winrt::Spacious::implementation {
 	struct ListPage: ListPageT<ListPage> {
 		private:
 			winrt::Windows::Foundation::Collections::IVector<IInspectable> list;
+			bool creating = false;
 		public:
 			ListPage();
 			winrt::Windows::Foundation::Collections::IVector<IInspectable> List();
+			void onCreateCommand(
+				const winrt::Windows::Foundation::IInspectable &source,
+				const winrt::Microsoft::UI::Xaml::RoutedEventArgs &args
+			);
 	};
 }
 

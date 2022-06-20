@@ -21,6 +21,7 @@
       <Filter>Foreign</Filter>
     </ClCompile>
     <ClCompile Include="NotificationActivator.cpp" />
+    <ClCompile Include="Date.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -28,6 +29,7 @@
       <Filter>Foreign</Filter>
     </ClInclude>
     <ClInclude Include="NotificationActivator.h" />
+    <ClInclude Include="Date.h" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />

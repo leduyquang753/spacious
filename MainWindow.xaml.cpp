@@ -1,6 +1,4 @@
-﻿#include <string>
-
-#include "pch.h"
+﻿#include "pch.h"
 
 #include <Microsoft.UI.Xaml.Window.h>
 #include <winrt/Microsoft.Windows.ApplicationModel.Resources.h>
@@ -46,10 +44,5 @@ namespace winrt::Spacious::implementation {
 	}
 
 	void MainWindow::onNavigationChanged(const IInspectable &source, const NavigationViewSelectionChangedEventArgs &arguments) {
-		using namespace std::string_literals;
-		static int count = 0;
-		MainFrame().Content().try_as<ListPage>().List().Append(
-			winrt::box_value(ReminderEntry{(L"Reminder #"s + std::to_wstring(++count)).c_str()})
-		);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include <windows.h>
 #include <unknwn.h>
 #include <restrictederrorinfo.h>

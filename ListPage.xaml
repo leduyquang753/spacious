@@ -24,8 +24,13 @@
 							x:Uid="ListPage_ReminderList_Header"
 							Style="{StaticResource TitleTextBlockStyle}"
 						/>
-						<Button Grid.Column="1" x:Uid="ListPage_Add" VerticalAlignment="Center">
-							<FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;"/>
+						<Button
+							Grid.Column="1"
+							x:Uid="ListPage_Add"
+							VerticalAlignment="Center"
+							Click="onCreateCommand"
+						>
+							<FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE109;"/>
 						</Button>
 					</Grid>
 				</ListView.Header>

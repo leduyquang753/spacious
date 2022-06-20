@@ -8,41 +8,103 @@
 	mc:Ignorable="d"
 >
 	<Grid RowDefinitions="Auto, *, Auto">
-		<TextBox Grid.Row="0" x:Name="Name" x:Uid="ReminderDetailsPage_Name" FontWeight="SemiBold" Margin="13,8,13,8"/>
+		<TextBox
+			Grid.Row="0"
+			x:Name="Name" x:Uid="ReminderDetailsPage_Name"
+			FontWeight="SemiBold"
+			Margin="13,8,13,8"
+			TextChanged="onNameChange"
+		/>
 		<ScrollViewer Grid.Row="1">
 			<StackPanel Orientation="Vertical" Margin="24,0,24,0">
-				<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type"/>
-				<TextBlock x:Uid="ReminderDetailsPage_StartDate" Margin="0,0,0,8"/>
+				<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type" Toggled="onTypeChange"/>
+				<TextBlock x:Name="StartDateLabel" Margin="0,0,0,8"/>
 				<StackPanel Orientation="Horizontal">
-					<NumberBox x:Name="StartDay" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="31" SmallChange="1" LargeChange="10" Value="1"/>
+					<NumberBox
+						x:Name="StartDay" x:Uid="ReminderDetailsPage_StartDay"
+						SpinButtonPlacementMode="Compact"
+						Minimum="1" Maximum="31"
+						SmallChange="1" LargeChange="10"
+						Value="1"
+						ValueChanged="onStartDateElementChange"
+					/>
 					<TextBlock Text="/" VerticalAlignment="Center" Margin="4,0,4,0"/>
-					<NumberBox x:Name="StartMonth" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="12" SmallChange="1" LargeChange="10" Value="1"/>
+					<NumberBox
+						x:Name="StartMonth" x:Uid="ReminderDetailsPage_StartMonth"
+						SpinButtonPlacementMode="Compact"
+						Minimum="1" Maximum="12"
+						SmallChange="1" LargeChange="10"
+						Value="1"
+						ValueChanged="onStartDateElementChange"
+					/>
 					<TextBlock Text="/" VerticalAlignment="Center" Margin="4,0,4,0"/>
-					<NumberBox x:Name="StartYear" SpinButtonPlacementMode="Compact" Minimum="1900" Maximum="2100" SmallChange="1" LargeChange="10" Value="2022"/>
+					<NumberBox
+						x:Name="StartYear" x:Uid="ReminderDetailsPage_StartYear"
+						SpinButtonPlacementMode="Compact"
+						Minimum="1900" Maximum="2100"
+						SmallChange="1" LargeChange="10"
+						Value="2022"
+						ValueChanged="onStartDateElementChange"
+					/>
+					<Button x:Uid="ReminderDetailsPage_PickDate" Margin="8,0,0,0" Click="onBeginPickDate">
+						<Button.Flyout>
+							<Flyout>
+								<CalendarView Name="DatePicker" SelectedDatesChanged="onPickDate"/>
+							</Flyout>
+						</Button.Flyout>
+						<FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE787;"/>
+					</Button>
 				</StackPanel>
-				<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
-				<StackPanel Orientation="Horizontal">
-					<NumberBox x:Name="RecurringAmount" SpinButtonPlacementMode="Compact" Minimum="1" Maximum="1000" SmallChange="1" LargeChange="10" Value="1"/>
-					<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
-						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
-						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
-						<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>
-					</ComboBox>
+				<StackPanel x:Name="RecurringPeriodPanel" Orientation="Vertical">
+					<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
+					<StackPanel Orientation="Horizontal">
+						<NumberBox
+							x:Name="RecurringAmount"
+							SpinButtonPlacementMode="Compact"
+							Minimum="1" Maximum="1000"
+							SmallChange="1" LargeChange="10"
+							Value="1"
+							ValueChanged="onRecurringAmountChange"
+						/>
+						<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
+							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
+							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
+							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>
+						</ComboBox>
+					</StackPanel>
 				</StackPanel>
 				<Grid ColumnDefinitions="*" Margin="0,8,0,0">
-					<TextBox Grid.Column="0" x:Name="NotificationText" x:Uid="ReminderDetailsPage_NotificationText" PlaceholderText="Reminder name"/>
+					<TextBox
+						Grid.Column="0"
+						x:Name="NotificationText" x:Uid="ReminderDetailsPage_NotificationText"
+					/>
 				</Grid>
 			</StackPanel>
 		</ScrollViewer>
 		<Grid Grid.Row="2" ColumnDefinitions="*, Auto" Margin="24,8,24,16">
-			<TextBlock Grid.Column="0" Text="You must specify a name for the reminder." Foreground="Red" TextTrimming="WordEllipsis" VerticalAlignment="Center"/>
+			<TextBlock
+				Grid.Column="0"
+				Name="Error"
+				Text=""
+				Foreground="Red"
+				TextTrimming="CharacterEllipsis"
+				VerticalAlignment="Center"
+			/>
 			<StackPanel Grid.Column="1" Orientation="Horizontal">
-				<StackPanel Orientation="Horizontal">
-					<Button x:Uid="ReminderDetailsPage_Create" Style="{StaticResource AccentButtonStyle}" Margin="8,0,0,0"/>
+				<StackPanel Name="CreatingButtons" Orientation="Horizontal">
+					<Button
+						x:Name="CreateButton" x:Uid="ReminderDetailsPage_Create"
+						Style="{StaticResource AccentButtonStyle}"
+						Margin="8,0,0,0"
+					/>
 				</StackPanel>
-				<StackPanel Orientation="Horizontal">
+				<StackPanel Name="EditingButtons" Orientation="Horizontal">
 					<HyperlinkButton x:Uid="ReminderDetailsPage_RevertChanges" Margin="8,0,0,0"/>
-					<Button x:Uid="ReminderDetailsPage_Save" Style="{StaticResource AccentButtonStyle}" Margin="8,0,0,0"/>
+					<Button
+						x:Name="SaveButton" x:Uid="ReminderDetailsPage_Save"
+						Style="{StaticResource AccentButtonStyle}"
+						Margin="8,0,0,0"
+					/>
 					<Button x:Uid="ReminderDetailsPage_Delete" Foreground="White" Background="Red" Margin="8,0,0,0">
 						<Button.Resources>
 							<ResourceDictionary>

@@ -1,6 +1,6 @@
 namespace Spacious {
 	[default_interface]
 	runtimeclass ReminderDetailsPage: Microsoft.UI.Xaml.Controls.Page {
-		ReminderDetailsPage();
+		ReminderDetailsPage(Boolean creating);
 	}
 }

@@ -1,4 +1,5 @@
 ﻿#include "pch.h"
+
 #include "ListPage.xaml.h"
 #if __has_include("ListPage.g.cpp")
 	#include "ListPage.g.cpp"
@@ -13,10 +14,19 @@ namespace winrt::Spacious::implementation {
 
 		ReminderList().ItemsSource(List());
 
-		DetailsPane().Navigate(winrt::xaml_typename<ReminderDetailsPage>());
+		DetailsPane().Navigate(winrt::xaml_typename<NoReminderSelectedPage>());
 	}
 	
 	IVector<IInspectable> ListPage::List() {
 		return list;
+	}
+	
+	void ListPage::onCreateCommand(
+		const winrt::Windows::Foundation::IInspectable &source,
+		const winrt::Microsoft::UI::Xaml::RoutedEventArgs &args
+	) {
+		if (creating) return;
+		DetailsPane().Content(ReminderDetailsPage(true));
+		creating = true;
 	}
 }
