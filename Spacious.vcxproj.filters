@@ -22,6 +22,7 @@
     </ClCompile>
     <ClCompile Include="NotificationActivator.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="ReminderStore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="NotificationActivator.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="Reminder.h" />
+    <ClInclude Include="ReminderStore.h" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />

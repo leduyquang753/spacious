@@ -1,12 +1,11 @@
 ﻿#pragma once
 
-#include <vector>
-
 #include <winrt/Microsoft.UI.Xaml.h>
 #include <winrt/Microsoft.UI.Xaml.Markup.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.Primitives.h>
 
 #include "Reminder.h"
+#include "ReminderStore.h"
 
 #include "App.xaml.h"
 #include "ReminderDetailsPage.xaml.h"
@@ -18,9 +17,8 @@ namespace winrt::Spacious::implementation {
 		private:
 			winrt::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
 				= App::instance->resourceLoader;
-			std::vector<::Spacious::Reminder> reminders;
+			::Spacious::ReminderStore store;
 			winrt::Windows::Foundation::Collections::IVector<IInspectable> list;
-			int nextID = 1;
 			ReminderDetailsPage *detailsPage = nullptr;
 			int editingIndex = -2;
 			bool updating = false;

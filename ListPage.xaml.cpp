@@ -3,6 +3,7 @@
 #include <winrt/Microsoft.UI.Xaml.Media.Animation.h>
 
 #include "Reminder.h"
+#include "ReminderStore.h"
 
 #include "ListPage.xaml.h"
 #if __has_include("ListPage.g.cpp")
@@ -22,6 +23,9 @@ namespace winrt::Spacious::implementation {
 	ListPage::ListPage(): list(winrt::single_threaded_observable_vector<IInspectable>()) {
 		InitializeComponent();
 
+		store.load();
+		for (const auto &reminder : store.reminders)
+			list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
 		ReminderList().ItemsSource(List());
 
 		DetailsPane().Navigate(winrt::xaml_typename<NoReminderSelectedPage>());
@@ -32,32 +36,35 @@ namespace winrt::Spacious::implementation {
 	}
 
 	const ::Spacious::Reminder& ListPage::getReminder(const int index) {
-		return reminders[index];
+		return store.reminders[index];
 	}
 
 	void ListPage::addReminder(const ::Spacious::Reminder &reminder) {
-		reminders.push_back(reminder);
-		reminders.back().id = nextID++;
+		store.reminders.push_back(reminder);
+		store.reminders.back().id = store.nextID++;
 		updating = true;
 		list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
 		updating = false;
+		store.save();
 	}
 
 	void ListPage::setReminder(const int index, const ::Spacious::Reminder &reminder) {
-		const int id = reminders[index].id;
-		reminders[index] = reminder;
-		reminders[index].id = id;
+		const int id = store.reminders[index].id;
+		store.reminders[index] = reminder;
+		store.reminders[index].id = id;
 		updating = true;
 		list.SetAt(index, winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
 		ReminderList().SelectedIndex(index);
 		updating = false;
+		store.save();
 	}
 
 	void ListPage::deleteReminder(const int index) {
-		reminders.erase(reminders.begin() + index);
+		store.reminders.erase(store.reminders.begin() + index);
 		updating = true;
 		list.RemoveAt(index);
 		updating = false;
+		store.save();
 	}
 
 	void ListPage::editReminder(const int index) {
