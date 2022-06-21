@@ -141,6 +141,27 @@
   <data name="ReminderDetailsPage_Delete.Content" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="ReminderDetailsPage_Dialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_SureToDelete" xml:space="preserve">
+    <value>Are you sure to delete the current reminder?</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_UnsavedCreation" xml:space="preserve">
+    <value>&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;You are having an &lt;Run FontWeight="Bold"&gt;unsaved reminder&lt;/Run&gt;.&lt;/Paragraph&gt;</value>
+  </data>
+  <data name="ReminderDetailsPage_Dialog_UnsavedEdit" xml:space="preserve">
+    <value>&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;You are having a reminder with &lt;Run FontWeight="Bold"&gt;unsaved changes&lt;/Run&gt;.&lt;/Paragraph&gt;</value>
+  </data>
   <data name="ReminderDetailsPage_Error_InvalidDate" xml:space="preserve">
     <value>The date specified is invalid.</value>
   </data>

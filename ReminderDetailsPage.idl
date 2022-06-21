@@ -1,6 +1,8 @@
+import "ListPage.idl";
+
 namespace Spacious {
 	[default_interface]
 	runtimeclass ReminderDetailsPage: Microsoft.UI.Xaml.Controls.Page {
-		ReminderDetailsPage(Boolean creating);
+		ReminderDetailsPage([ref] ListPage parent, Int32 index);
 	}
 }

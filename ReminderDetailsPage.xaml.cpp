@@ -1,9 +1,10 @@
 ﻿#include "pch.h"
 
-#include <chrono>
 #include <ctime>
+#include <string_view>
 
 #include "Date.h"
+#include "Reminder.h"
 
 #include "ReminderDetailsPage.xaml.h"
 #if __has_include("ReminderDetailsPage.g.cpp")
@@ -12,26 +13,46 @@
 
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
+using namespace winrt::Microsoft::UI::Xaml::Documents;
+using namespace winrt::Microsoft::UI::Xaml::Markup;
 using namespace winrt::Windows::Foundation;
 
 namespace winrt::Spacious::implementation {
-	ReminderDetailsPage::ReminderDetailsPage(const bool creating) {
+	ReminderDetailsPage::ReminderDetailsPage(const winrt::Spacious::ListPage &parentProjection, int index):
+		parent(*winrt::get_self<ListPage>(parentProjection)), editingIndex(index)
+	{
 		InitializeComponent();
-		CreatingButtons().Visibility(creating ? Visibility::Visible : Visibility::Collapsed);
-		EditingButtons().Visibility(creating ? Visibility::Collapsed : Visibility::Visible);
+		CreatingButtons().Visibility(index == -1 ? Visibility::Visible : Visibility::Collapsed);
+		EditingButtons().Visibility(index == -1 ? Visibility::Collapsed : Visibility::Visible);
+		
+		if (index == -1) {
+			const auto timeT = std::time(nullptr);
+			const auto &cTime = *std::localtime(&timeT);
+			StartDay().Value(currentDay = cTime.tm_mday);
+			StartMonth().Value(currentMonth = cTime.tm_mon + 1);
+			StartYear().Value(currentYear = cTime.tm_year + 1900);
+		} else {
+			loadReminderInfo();
+		}
+		
 		updateName();
 		updateType();
 		
-		{
-			const auto timeT = std::time(nullptr);
-			const auto &cTime = *std::localtime(&timeT);
-			StartDay().Value(cTime.tm_mday);
-			StartMonth().Value(cTime.tm_mon + 1);
-			StartYear().Value(cTime.tm_year + 1900);
-		}
-		
 		validationDisabled = false;
 		validate();
+	}
+
+	void ReminderDetailsPage::loadReminderInfo() {
+		const auto &reminder = parent.getReminder(editingIndex);
+		Name().Text(reminder.name.c_str());
+		Type().IsOn(reminder.isRecurring);
+		::Spacious::Date startDate(reminder.startDate);
+		StartDay().Value(startDate.day());
+		StartMonth().Value(startDate.month());
+		StartYear().Value(startDate.year());
+		RecurringAmount().Value(reminder.isRecurring ? reminder.recurringAmount : 1);
+		RecurringUnit().SelectedIndex(reminder.isRecurring ? static_cast<int>(reminder.recurringUnit) : 0);
+		NotificationText().Text(reminder.notificationText.c_str());
 	}
 
 	void ReminderDetailsPage::updateName() {
@@ -79,6 +100,79 @@ namespace winrt::Spacious::implementation {
 		Error().Text(L"");
 		CreateButton().IsEnabled(true);
 		SaveButton().IsEnabled(true);
+	}
+
+	bool ReminderDetailsPage::hasUnsavedChanges() {
+		if (editingIndex == -1) {
+			return
+				!Name().Text().empty()
+				|| Type().IsOn()
+				|| static_cast<int>(StartDay().Value()) != currentDay
+				|| static_cast<int>(StartMonth().Value()) != currentMonth
+				|| static_cast<int>(StartYear().Value()) != currentYear
+				|| static_cast<int>(RecurringAmount().Value()) != 1
+				|| RecurringUnit().SelectedIndex() != 0
+				|| !NotificationText().Text().empty();
+		} else {
+			const auto &reminder = parent.getReminder(editingIndex);
+			::Spacious::Date startDate(reminder.startDate);
+			return
+				Name().Text() != reminder.name.c_str()
+				|| Type().IsOn() != reminder.isRecurring
+				|| static_cast<int>(StartDay().Value()) != startDate.day()
+				|| static_cast<int>(StartMonth().Value()) != startDate.month()
+				|| static_cast<int>(StartYear().Value()) != startDate.year()
+				|| (Type().IsOn() && (
+					static_cast<int>(RecurringAmount().Value()) != reminder.recurringAmount
+					|| RecurringUnit().SelectedIndex() != static_cast<int>(reminder.recurringUnit)
+				))
+				|| NotificationText().Text() != reminder.notificationText.c_str();
+		}
+	}
+
+	void ReminderDetailsPage::save() {
+		::Spacious::Reminder reminder = {
+			0,
+			std::wstring(static_cast<std::wstring_view>(Name().Text())),
+			Type().IsOn(),
+			::Spacious::Date(
+				static_cast<int>(StartDay().Value()),
+				static_cast<int>(StartMonth().Value()),
+				static_cast<int>(StartYear().Value())
+			).index(),
+			static_cast<int>(RecurringAmount().Value()),
+			static_cast<::Spacious::Reminder::RecurringUnit>(
+				static_cast<int>(RecurringUnit().SelectedIndex())
+			),
+			std::wstring(static_cast<std::wstring_view>(NotificationText().Text()))
+		};
+		if (editingIndex == -1) {
+			parent.addReminder(reminder);
+			parent.closeReminderDetails();
+		} else {
+			parent.setReminder(editingIndex, reminder);
+		}
+	}
+	
+	IAsyncAction ReminderDetailsPage::del() {
+		ContentDialog dialog;
+		dialog.XamlRoot(XamlRoot());
+		dialog.Style(
+			Application::Current().Resources()
+				.Lookup(winrt::box_value(L"DefaultContentDialogStyle"))
+				.as<winrt::Microsoft::UI::Xaml::Style>()
+		);
+		TextBlock content;
+		content.Text(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_SureToDelete"));
+		dialog.Content(content);
+		dialog.PrimaryButtonText(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_Delete"));
+		dialog.IsSecondaryButtonEnabled(false);
+		dialog.CloseButtonText(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_Cancel"));
+		dialog.DefaultButton(ContentDialogButton::Primary);
+		if (co_await dialog.ShowAsync() == ContentDialogResult::Primary) {
+			parent.deleteReminder(editingIndex);
+			parent.closeReminderDetails();
+		}
 	}
 
 	void ReminderDetailsPage::onNameChange(const IInspectable &source, const RoutedEventArgs &args) {
@@ -141,5 +235,17 @@ namespace winrt::Spacious::implementation {
 		updating = true;
 		source.Value(static_cast<int>(source.Value()));
 		updating = false;
+	}
+	
+	void ReminderDetailsPage::onRevertChanges(const IInspectable &source, const RoutedEventArgs &args) {
+		loadReminderInfo();
+	}
+	
+	void ReminderDetailsPage::onSave(const IInspectable &source, const RoutedEventArgs &args) {
+		save();
+	}
+	
+	void ReminderDetailsPage::onDelete(const IInspectable &source, const RoutedEventArgs &args) {
+		del();
 	}
 }
