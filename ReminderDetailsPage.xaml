@@ -94,7 +94,7 @@
 				<StackPanel Name="CreatingButtons" Orientation="Horizontal">
 					<Button
 						x:Name="CreateButton" x:Uid="ReminderDetailsPage_Create"
-						Style="{StaticResource AccentButtonStyle}"
+						Style="{ThemeResource AccentButtonStyle}"
 						Margin="8,0,0,0"
 						Click="onSave"
 					/>
@@ -107,7 +107,7 @@
 					/>
 					<Button
 						x:Name="SaveButton" x:Uid="ReminderDetailsPage_Save"
-						Style="{StaticResource AccentButtonStyle}"
+						Style="{ThemeResource AccentButtonStyle}"
 						Margin="8,0,0,0"
 						Click="onSave"
 					/>

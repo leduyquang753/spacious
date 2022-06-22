@@ -1,6 +1,8 @@
 ﻿#pragma once
 
-#include <winrt/Windows.ApplicationModel.Resources.h>
+#include <optional>
+
+#include <winrt/Microsoft.Windows.ApplicationModel.Resources.h>
 
 #include "App.xaml.g.h"
 
@@ -11,7 +13,7 @@ namespace winrt::Spacious::implementation {
 		public:
 			static App *instance;
 
-			winrt::Windows::ApplicationModel::Resources::ResourceLoader resourceLoader;
+			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader resourceLoader;
 
 			App();
 			void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const &);

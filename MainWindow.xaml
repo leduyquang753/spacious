@@ -7,24 +7,45 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 >
-	<NavigationView
-		x:Name="MainNavigationView"
-		PaneDisplayMode="LeftCompact"
-		IsBackButtonVisible="Collapsed"
-		IsSettingsVisible="False"
-		OpenPaneLength="150"
-		SelectionChanged="onNavigationChanged"
-	>
-		<NavigationView.MenuItems>
-			<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" IsSelected="True"/>
-			<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings"/>
-		</NavigationView.MenuItems>
-		<Frame x:Name="MainFrame">
-			<Frame.ContentTransitions>
-				<TransitionCollection>
-					<NavigationThemeTransition/>
-				</TransitionCollection>
-			</Frame.ContentTransitions>
-		</Frame>
-	</NavigationView>
+	<Grid RowDefinitions="Auto, *">
+		<Grid ColumnDefinitions="Auto, *, Auto" Name="TitleBar" Height="{x:Bind TitleBarHeight}">
+			<Border Grid.Column="0" Width="{x:Bind TitleBarLeftPadding}"/>
+			<TextBlock
+				Grid.Column="1"
+				x:Uid="MainWindow_Title"
+				Style="{ThemeResource CaptionTextBlockStyle}"
+				VerticalAlignment="Center"
+				Margin="16,0,0,0"
+			/>
+			<Border Grid.Column="2" Width="{x:Bind TitleBarRightPadding}"/>
+		</Grid>
+		<NavigationView
+			Grid.Row="1"
+			x:Name="MainNavigationView"
+			PaneDisplayMode="LeftCompact"
+			IsBackButtonVisible="Collapsed"
+			IsSettingsVisible="False"
+			OpenPaneLength="150"
+			Background="Transparent"
+			SelectionChanged="onNavigationChanged"
+		>
+			<NavigationView.Resources>
+				<SolidColorBrush
+					x:Key="NavigationViewContentBackground"
+					Color="{ThemeResource LayerOnAcrylicFillColorDefault}"
+				/>
+			</NavigationView.Resources>
+			<NavigationView.MenuItems>
+				<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" IsSelected="True"/>
+				<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings"/>
+			</NavigationView.MenuItems>
+			<Frame x:Name="MainFrame">
+				<Frame.ContentTransitions>
+					<TransitionCollection>
+						<NavigationThemeTransition/>
+					</TransitionCollection>
+				</Frame.ContentTransitions>
+			</Frame>
+		</NavigationView>
+	</Grid>
 </Window>

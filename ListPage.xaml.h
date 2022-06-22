@@ -3,6 +3,7 @@
 #include <winrt/Microsoft.UI.Xaml.h>
 #include <winrt/Microsoft.UI.Xaml.Markup.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.Primitives.h>
+#include <winrt/Microsoft.Windows.ApplicationModel.Resources.h>
 
 #include "Reminder.h"
 #include "ReminderStore.h"
@@ -15,7 +16,7 @@
 namespace winrt::Spacious::implementation {
 	struct ListPage: ListPageT<ListPage> {
 		private:
-			winrt::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
+			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
 				= App::instance->resourceLoader;
 			::Spacious::ReminderStore store;
 			winrt::Windows::Foundation::Collections::IVector<IInspectable> list;

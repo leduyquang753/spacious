@@ -10,10 +10,10 @@
 >
 	<SplitView
 		x:Name="MainSplitView"
-		PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}"
 		IsPaneOpen="True"
 		OpenPaneLength="300"
 		DisplayMode="Inline"
+		PaneBackground="Transparent"
 	>
 		<SplitView.Pane>
 			<ListView x:Name="ReminderList" SelectionChanged="onSelectReminder">
@@ -22,12 +22,13 @@
 						<TextBlock
 							Grid.Column="0"
 							x:Uid="ListPage_ReminderList_Header"
-							Style="{StaticResource TitleTextBlockStyle}"
+							Style="{ThemeResource TitleTextBlockStyle}"
 						/>
 						<Button
 							Grid.Column="1"
 							x:Uid="ListPage_Add"
 							VerticalAlignment="Center"
+							Background="{ThemeResource LayerOnAcrylicFillColorDefaultBrush}"
 							Click="onCreateCommand"
 						>
 							<FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE109;"/>
@@ -41,6 +42,10 @@
 				</ListView.ItemTemplate>
 			</ListView>
 		</SplitView.Pane>
+		<!--
+			If using acrylic background:
+			Background="{ThemeResource SolidBackgroundFillColorBaseBrush}"
+		-->
 		<Frame x:Name="DetailsPane"/>
 	</SplitView>
 </Page>

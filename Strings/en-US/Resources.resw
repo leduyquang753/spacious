@@ -126,11 +126,17 @@
   <data name="ListPage_ReminderList_Header.Text" xml:space="preserve">
     <value>Reminders</value>
   </data>
+  <data name="MainWindow.Title" xml:space="preserve">
+    <value>Spacious</value>
+  </data>
   <data name="MainWindow_MainNavigationView_List.Content" xml:space="preserve">
     <value>Reminders</value>
   </data>
   <data name="MainWindow_MainNavigationView_Settings.Content" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="MainWindow_Title.Text" xml:space="preserve">
+    <value>Spacious</value>
   </data>
   <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
     <value>Select a reminder from the list to the left to see its details or click the plus button to add a new one.</value>

@@ -3,7 +3,7 @@
 #include <winrt/Microsoft.UI.Xaml.h>
 #include <winrt/Microsoft.UI.Xaml.Markup.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.Primitives.h>
-#include <winrt/Windows.ApplicationModel.Resources.h>
+#include <winrt/Microsoft.Windows.ApplicationModel.Resources.h>
 
 #include "App.xaml.h"
 #include "ListPage.xaml.h"
@@ -14,7 +14,7 @@ namespace winrt::Spacious::implementation {
 	struct ReminderDetailsPage: ReminderDetailsPageT<ReminderDetailsPage> {
 		private:
 			ListPage &parent;
-			winrt::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
+			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
 				= App::instance->resourceLoader;
 			int editingIndex;
 			bool

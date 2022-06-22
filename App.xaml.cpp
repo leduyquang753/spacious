@@ -22,7 +22,9 @@ namespace winrt::Spacious::implementation {
 		InitializeComponent();
 
 		#if defined _DEBUG && !defined DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION
-		UnhandledException([this](const IInspectable &source, const winrt::Microsoft::UI::Xaml::UnhandledExceptionEventArgs &e) {
+		UnhandledException([this](
+			const IInspectable &source, const winrt::Microsoft::UI::Xaml::UnhandledExceptionEventArgs &e
+		) {
 			if (IsDebuggerPresent()) {
 				auto errorMessage = e.Message();
 				__debugbreak();
