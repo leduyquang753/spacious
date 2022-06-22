@@ -23,7 +23,6 @@ namespace winrt::Spacious::implementation {
 			ReminderDetailsPage *detailsPage = nullptr;
 			int editingIndex = -2;
 			bool updating = false;
-			void tryEditReminder(const int index);
 			winrt::Windows::Foundation::IAsyncAction showUnsavedDialog(const int index);
 		public:
 			ListPage();
@@ -33,6 +32,7 @@ namespace winrt::Spacious::implementation {
 			void setReminder(const int index, const ::Spacious::Reminder &reminder);
 			void deleteReminder(const int index);
 			void editReminder(const int index);
+			void tryEditReminder(const int index);
 			void closeReminderDetails();
 			void onCreateCommand(
 				const winrt::Windows::Foundation::IInspectable &source,

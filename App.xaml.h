@@ -8,12 +8,11 @@
 
 namespace winrt::Spacious::implementation {
 	struct App: AppT<App> {
-		private:
-			winrt::Microsoft::UI::Xaml::Window window = nullptr;
 		public:
 			static App *instance;
 
 			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader resourceLoader;
+			winrt::Microsoft::UI::Xaml::Window window = nullptr;
 
 			App();
 			void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const &);

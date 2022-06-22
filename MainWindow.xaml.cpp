@@ -11,6 +11,7 @@
 #include <winrt/Windows.UI.Xaml.Interop.h>
 
 #include "App.xaml.h"
+#include "ListPage.xaml.h"
 
 #include "MainWindow.xaml.h"
 #if __has_include("MainWindow.g.cpp")
@@ -97,7 +98,7 @@ namespace winrt::Spacious::implementation {
 			}
 		}
 
-		MainFrame().Navigate(winrt::xaml_typename<ListPage>());
+		MainFrame().Navigate(winrt::xaml_typename<winrt::Spacious::ListPage>());
 	}
 
 	AppWindow MainWindow::getAppWindow() {
@@ -153,16 +154,37 @@ namespace winrt::Spacious::implementation {
 	}
 	
 	LRESULT MainWindow::handleWindowMessage(HWND window, UINT message, WPARAM wParam, LPARAM lParam) {
-		if (message == WM_GETMINMAXINFO) {
-			auto &info = *reinterpret_cast<MINMAXINFO*>(lParam);
-			info.ptMinTrackSize.x = 800;
-			info.ptMinTrackSize.y = 400;
+		switch (message) {
+			case WM_GETMINMAXINFO: {
+				auto &info = *reinterpret_cast<MINMAXINFO*>(lParam);
+				info.ptMinTrackSize.x = 800;
+				info.ptMinTrackSize.y = 400;
+				break;
+			}
+			case WM_CLOSE: {
+				auto mainWindow = App::instance->window.as<MainWindow>();
+				if (mainWindow->closing)
+					return CallWindowProc(oldHandler, window, message, wParam, lParam);
+				auto listPage = mainWindow->MainFrame().Content().try_as<ListPage>();
+				if (listPage == nullptr)
+					return CallWindowProc(oldHandler, window, message, wParam, lParam);
+				else
+					listPage->tryEditReminder(-2);
+				break;
+			}
+			default:
+				return CallWindowProc(oldHandler, window, message, wParam, lParam);
 		}
-		return CallWindowProc(oldHandler, window, message, wParam, lParam);
+		return 0;
 	}
 
 	void MainWindow::onNavigationChanged(
 		const IInspectable &source, const NavigationViewSelectionChangedEventArgs &arguments
 	) {
+	}
+
+	void MainWindow::close() {
+		closing = true;
+		Close();
 	}
 }

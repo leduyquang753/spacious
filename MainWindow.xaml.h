@@ -30,6 +30,7 @@ namespace winrt::Spacious::implementation {
 			winrt::Microsoft::UI::Xaml::FrameworkElement::ActualThemeChanged_revoker themeChangedRevoker;
 			winrt::Microsoft::UI::Xaml::FrameworkElement rootElement = nullptr;
 			winrt::Windows::System::DispatcherQueueController dispatcherQueueController = nullptr;
+			bool closing = false;
 			Microsoft::UI::Windowing::AppWindow getAppWindow();
 			void setCaptionButtonColors();
 		public:
@@ -41,7 +42,7 @@ namespace winrt::Spacious::implementation {
 				const winrt::Windows::Foundation::IInspectable &source,
 				const winrt::Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs &arguments
 			);
-			void Close();
+			void close();
 	};
 }
 

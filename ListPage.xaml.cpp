@@ -10,6 +10,7 @@
 	#include "ListPage.g.cpp"
 #endif
 
+#include "MainWindow.xaml.h"
 #include "ReminderDetailsPage.xaml.h"
 
 using namespace winrt::Microsoft::UI::Xaml;
@@ -91,11 +92,12 @@ namespace winrt::Spacious::implementation {
 	}
 
 	void ListPage::tryEditReminder(const int index) {
-		if (index == editingIndex) return;
+		if (index != -2 && index == editingIndex) return;
 		if (editingIndex != -2 && detailsPage->hasUnsavedChanges()) {
 			showUnsavedDialog(index);
 		} else {
-			editReminder(index);
+			if (index == -2) App::instance->window.as<MainWindow>()->close();
+			else editReminder(index);
 		}
 	}
 
@@ -122,14 +124,11 @@ namespace winrt::Spacious::implementation {
 		dialog.SecondaryButtonText(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_Discard"));
 		dialog.CloseButtonText(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_Cancel"));
 		dialog.DefaultButton(ContentDialogButton::Primary);
-		switch (co_await dialog.ShowAsync()) {
-			case ContentDialogResult::Primary:
-				detailsPage->save();
-				editReminder(index);
-				break;
-			case ContentDialogResult::Secondary:
-				editReminder(index);
-				break;
+		auto response = co_await dialog.ShowAsync();
+		if (response == ContentDialogResult::Primary) detailsPage->save();
+		if (response != ContentDialogResult::None) {
+			if (index == -2) App::instance->window.Close();
+			else editReminder(index);
 		}
 	}
 	
