@@ -98,6 +98,17 @@ namespace winrt::Spacious::implementation {
 			}
 		}
 
+		closedRevoker = Closed(winrt::auto_revoke, [&](auto&&, auto&&) {
+			if (backgroundController != nullptr) {
+				backgroundController.Close();
+				backgroundController = nullptr;
+			}
+			if (dispatcherQueueController != nullptr) {
+				dispatcherQueueController.ShutdownQueueAsync();
+				dispatcherQueueController = nullptr;
+			}
+		});
+
 		MainFrame().Navigate(winrt::xaml_typename<winrt::Spacious::ListPage>());
 	}
 
@@ -185,6 +196,6 @@ namespace winrt::Spacious::implementation {
 
 	void MainWindow::close() {
 		closing = true;
-		Close();
+		Application::Current().Exit();
 	}
 }

@@ -6,6 +6,8 @@
 #include <limits>
 #include <string>
 
+#include "Date.h"
+
 #include "ReminderStore.h"
 
 namespace Spacious {
@@ -41,7 +43,9 @@ namespace Spacious {
 				nextLine();
 				std::getline(file, reminder.name);
 				file >> reminder.isRecurring;
-				file >> reminder.startDate;
+				int startDateIndex;
+				file >> startDateIndex;
+				reminder.startDate = Date(startDateIndex);
 				if (reminder.isRecurring) {
 					file >> reminder.recurringAmount;
 					int recurringUnitValue;
@@ -65,7 +69,7 @@ namespace Spacious {
 				<< reminder.id << '\n'
 				<< reminder.name << '\n'
 				<< reminder.isRecurring << '\n'
-				<< reminder.startDate << '\n';
+				<< reminder.startDate.index() << '\n';
 			if (reminder.isRecurring) {
 				file
 					<< reminder.recurringAmount << '\n'

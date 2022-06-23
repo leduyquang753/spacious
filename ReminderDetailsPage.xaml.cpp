@@ -46,10 +46,9 @@ namespace winrt::Spacious::implementation {
 		const auto &reminder = parent.getReminder(editingIndex);
 		Name().Text(reminder.name.c_str());
 		Type().IsOn(reminder.isRecurring);
-		::Spacious::Date startDate(reminder.startDate);
-		StartDay().Value(startDate.day());
-		StartMonth().Value(startDate.month());
-		StartYear().Value(startDate.year());
+		StartDay().Value(reminder.startDate.day());
+		StartMonth().Value(reminder.startDate.month());
+		StartYear().Value(reminder.startDate.year());
 		RecurringAmount().Value(reminder.isRecurring ? reminder.recurringAmount : 1);
 		RecurringUnit().SelectedIndex(reminder.isRecurring ? static_cast<int>(reminder.recurringUnit) : 0);
 		NotificationText().Text(reminder.notificationText.c_str());
@@ -115,13 +114,12 @@ namespace winrt::Spacious::implementation {
 				|| !NotificationText().Text().empty();
 		} else {
 			const auto &reminder = parent.getReminder(editingIndex);
-			::Spacious::Date startDate(reminder.startDate);
 			return
 				Name().Text() != reminder.name.c_str()
 				|| Type().IsOn() != reminder.isRecurring
-				|| static_cast<int>(StartDay().Value()) != startDate.day()
-				|| static_cast<int>(StartMonth().Value()) != startDate.month()
-				|| static_cast<int>(StartYear().Value()) != startDate.year()
+				|| static_cast<int>(StartDay().Value()) != reminder.startDate.day()
+				|| static_cast<int>(StartMonth().Value()) != reminder.startDate.month()
+				|| static_cast<int>(StartYear().Value()) != reminder.startDate.year()
 				|| (Type().IsOn() && (
 					static_cast<int>(RecurringAmount().Value()) != reminder.recurringAmount
 					|| RecurringUnit().SelectedIndex() != static_cast<int>(reminder.recurringUnit)
@@ -135,11 +133,11 @@ namespace winrt::Spacious::implementation {
 			0,
 			std::wstring(static_cast<std::wstring_view>(Name().Text())),
 			Type().IsOn(),
-			::Spacious::Date(
+			{
 				static_cast<int>(StartDay().Value()),
 				static_cast<int>(StartMonth().Value()),
 				static_cast<int>(StartYear().Value())
-			).index(),
+			},
 			static_cast<int>(RecurringAmount().Value()),
 			static_cast<::Spacious::Reminder::RecurringUnit>(
 				static_cast<int>(RecurringUnit().SelectedIndex())

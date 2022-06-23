@@ -75,19 +75,19 @@ namespace Spacious {
 		m_day = dayOfYear - table[m_month] + 1;
 	}
 
-	int Date::day() {
+	int Date::day() const {
 		return m_day;
 	}
 
-	int Date::month() {
+	int Date::month() const {
 		return m_month;
 	}
 
-	int Date::year() {
+	int Date::year() const {
 		return m_year;
 	}
 
-	int Date::index() {
+	int Date::index() const {
 		return m_index;
 	}
 }

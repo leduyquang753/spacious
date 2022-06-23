@@ -9,11 +9,12 @@
 #include "ReminderStore.h"
 
 #include "App.xaml.h"
-#include "ReminderDetailsPage.xaml.h"
 
 #include "ListPage.g.h"
 
 namespace winrt::Spacious::implementation {
+	struct ReminderDetailsPage;
+	
 	struct ListPage: ListPageT<ListPage> {
 		private:
 			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
@@ -33,6 +34,7 @@ namespace winrt::Spacious::implementation {
 			void deleteReminder(const int index);
 			void editReminder(const int index);
 			void tryEditReminder(const int index);
+			void editReminderByID(const int id);
 			void closeReminderDetails();
 			void onCreateCommand(
 				const winrt::Windows::Foundation::IInspectable &source,

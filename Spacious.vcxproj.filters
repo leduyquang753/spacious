@@ -23,6 +23,7 @@
     <ClCompile Include="NotificationActivator.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ReminderStore.cpp" />
+    <ClCompile Include="Reminder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

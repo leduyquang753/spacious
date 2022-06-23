@@ -27,9 +27,9 @@ namespace Spacious {
 
 			Date(const int day, const int month, const int year);
 			Date(const int index);
-			int day();
-			int month();
-			int year();
-			int index();
+			int day() const;
+			int month() const;
+			int year() const;
+			int index() const;
 	};
 }

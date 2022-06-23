@@ -141,6 +141,9 @@
   <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
     <value>Select a reminder from the list to the left to see its details or click the plus button to add a new one.</value>
   </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>Reminder</value>
+  </data>
   <data name="ReminderDetailsPage_Create.Content" xml:space="preserve">
     <value>Create</value>
   </data>

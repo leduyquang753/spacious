@@ -5,13 +5,14 @@
 #include "Reminder.h"
 #include "ReminderStore.h"
 
+#include "App.xaml.h"
+#include "MainWindow.xaml.h"
+#include "ReminderDetailsPage.xaml.h"
+
 #include "ListPage.xaml.h"
 #if __has_include("ListPage.g.cpp")
 	#include "ListPage.g.cpp"
 #endif
-
-#include "MainWindow.xaml.h"
-#include "ReminderDetailsPage.xaml.h"
 
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
@@ -71,9 +72,7 @@ namespace winrt::Spacious::implementation {
 	void ListPage::editReminder(const int index) {
 		editingIndex = index;
 		DetailsPane().Content(winrt::Spacious::ReminderDetailsPage(*this, index));
-		detailsPage = winrt::get_self<ReminderDetailsPage>(
-			DetailsPane().Content().as<winrt::Spacious::ReminderDetailsPage>()
-		);
+		detailsPage = DetailsPane().Content().as<winrt::Spacious::implementation::ReminderDetailsPage>().get();
 		updating = true;
 		ReminderList().SelectedIndex(index);
 		updating = false;
@@ -98,6 +97,17 @@ namespace winrt::Spacious::implementation {
 		} else {
 			if (index == -2) App::instance->window.as<MainWindow>()->close();
 			else editReminder(index);
+		}
+	}
+
+	void ListPage::editReminderByID(const int id) {
+		int index = 0;
+		for (const auto &reminder : store.reminders) {
+			if (reminder.id == id) {
+				tryEditReminder(index);
+				return;
+			}
+			++index;
 		}
 	}
 
@@ -143,7 +153,7 @@ namespace winrt::Spacious::implementation {
 		const winrt::Windows::Foundation::IInspectable &source,
 		const winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs &args
 	) {
-		if (updating) return;
+		if (updating || App::instance->activatingFromToast) return;
 		const int index = ReminderList().SelectedIndex();
 		tryEditReminder(index);
 	}
