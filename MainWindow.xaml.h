@@ -34,6 +34,7 @@ namespace winrt::Spacious::implementation {
 			Microsoft::UI::Windowing::AppWindow getAppWindow();
 			void setCaptionButtonColors();
 		public:
+			bool updating = false;
 			MainWindow();
 			double TitleBarHeight();
 			double TitleBarLeftPadding();
@@ -42,6 +43,7 @@ namespace winrt::Spacious::implementation {
 				const winrt::Windows::Foundation::IInspectable &source,
 				const winrt::Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs &arguments
 			);
+			void focus();
 			void close();
 	};
 }

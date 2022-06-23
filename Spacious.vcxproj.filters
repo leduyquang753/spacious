@@ -8,6 +8,7 @@
     <Page Include="ListPage.xaml" />
     <Page Include="NoReminderSelectedPage.xaml" />
     <Page Include="ReminderDetailsPage.xaml" />
+    <Page Include="SettingsPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl" />
@@ -24,6 +25,7 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="ReminderStore.cpp" />
     <ClCompile Include="Reminder.cpp" />
+    <ClCompile Include="SettingsPage_StartShortcutCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -34,6 +36,7 @@
     <ClInclude Include="Date.h" />
     <ClInclude Include="Reminder.h" />
     <ClInclude Include="ReminderStore.h" />
+    <ClInclude Include="Version.h" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />

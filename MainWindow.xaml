@@ -14,6 +14,7 @@
 				Grid.Column="1"
 				x:Uid="MainWindow_Title"
 				Style="{ThemeResource CaptionTextBlockStyle}"
+				TextTrimming="CharacterEllipsis"
 				VerticalAlignment="Center"
 				Margin="16,0,0,0"
 			/>
@@ -36,8 +37,8 @@
 				/>
 			</NavigationView.Resources>
 			<NavigationView.MenuItems>
-				<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" IsSelected="True"/>
-				<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings"/>
+				<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" Tag="0" IsSelected="True"/>
+				<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings" Tag="1"/>
 			</NavigationView.MenuItems>
 			<Frame x:Name="MainFrame">
 				<Frame.ContentTransitions>

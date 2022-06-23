@@ -1,0 +1,68 @@
+﻿<Page
+	x:Class="Spacious.SettingsPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Spacious"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d">
+	<Grid RowDefinitions="Auto, *, Auto">
+		<TextBlock
+			Grid.Row="0"
+			x:Uid="SettingsPage_Title"
+			Style="{ThemeResource TitleTextBlockStyle}"
+			Margin="16,8,16,16"
+		/>
+		<ScrollViewer Grid.Row="1">
+			<StackPanel Orientation="Vertical" Margin="16,0,16,0">
+				<StackPanel Name="NoScheduledTaskSection" Orientation="Vertical">
+					<TextBlock x:Uid="SettingsPage_NoScheduledTask" TextWrapping="Wrap"/>
+					<Button x:Uid="SettingsPage_CreateSchedulerTask" Margin="0,8,0,0" Click="onCreateSchedulerTask"/>
+				</StackPanel>
+				<StackPanel Name="SettingsSection" Orientation="Vertical">
+					<ToggleSwitch x:Name="EnableNotifications" x:Uid="SettingsPage_EnableNotifications"/>
+					<TextBlock x:Uid="SettingsPage_NotificationTime" TextWrapping="Wrap" Margin="0,8,0,0"/>
+					<StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+						<NumberBox
+							x:Name="NotificationHour" x:Uid="SettingsPage_NotificationHour"
+							SpinButtonPlacementMode="Compact"
+							Minimum="0" Maximum="23"
+							SmallChange="1" LargeChange="10"
+							Value="8"
+							ValueChanged="onNotificationTimeElementChange"
+						/>
+						<TextBlock Text="h" VerticalAlignment="Center" Margin="4,0,4,0"/>
+						<NumberBox
+							x:Name="NotificationMinute" x:Uid="SettingsPage_NotificationMinute"
+							SpinButtonPlacementMode="Compact"
+							Minimum="0" Maximum="59"
+							SmallChange="1" LargeChange="10"
+							Value="0"
+							ValueChanged="onNotificationTimeElementChange"
+						/>
+					</StackPanel>
+				</StackPanel>
+				<TextBlock x:Uid="SettingsPage_NeedsStartShortcut" TextWrapping="Wrap" Margin="0,16,0,0"/>
+				<Button x:Uid="SettingsPage_CreateStartShortcut" Margin="0,8,0,0" Click="onCreateStartShortcut"/>
+			</StackPanel>
+		</ScrollViewer>
+		<Grid Grid.Row="2" ColumnDefinitions="*, Auto" Margin="24,8,24,16">
+			<TextBlock Grid.Column="0" x:Name="Version" TextTrimming="WordEllipsis" VerticalAlignment="Center"/>
+			<StackPanel Grid.Column="1" Name="ButtonsSection" Orientation="Horizontal">
+				<HyperlinkButton
+					x:Uid="SettingsPage_RevertChanges"
+					Margin="8,0,0,0"
+					Click="onRevertChanges"
+				/>
+				<Button
+					Grid.Row="2"
+					x:Uid="SettingsPage_Save"
+					Style="{ThemeResource AccentButtonStyle}"
+					HorizontalAlignment="Right"
+					Margin="8,0,0,0"
+					Click="onSave"
+				/>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Page>

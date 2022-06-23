@@ -12,6 +12,7 @@
 
 #include "App.xaml.h"
 #include "ListPage.xaml.h"
+#include "SettingsPage.xaml.h"
 
 #include "MainWindow.xaml.h"
 #if __has_include("MainWindow.g.cpp")
@@ -178,7 +179,7 @@ namespace winrt::Spacious::implementation {
 					return CallWindowProc(oldHandler, window, message, wParam, lParam);
 				auto listPage = mainWindow->MainFrame().Content().try_as<ListPage>();
 				if (listPage == nullptr)
-					return CallWindowProc(oldHandler, window, message, wParam, lParam);
+					mainWindow->MainFrame().Content().as<SettingsPage>()->onNavigateOut(-2);
 				else
 					listPage->tryEditReminder(-2);
 				break;
@@ -192,6 +193,23 @@ namespace winrt::Spacious::implementation {
 	void MainWindow::onNavigationChanged(
 		const IInspectable &source, const NavigationViewSelectionChangedEventArgs &arguments
 	) {
+		if (updating) return;
+		switch (std::stoi(
+			MainNavigationView().SelectedItem().as<FrameworkElement>().Tag().as<winrt::hstring>().c_str()
+		)) {
+			case 0: {
+				auto settingsPage = MainFrame().Content().try_as<SettingsPage>();
+				if (settingsPage != nullptr) settingsPage->onNavigateOut(-1);
+				break;
+			}
+			case 1:
+				MainFrame().Navigate(winrt::xaml_typename<winrt::Spacious::SettingsPage>());
+				break;
+		}
+	}
+
+	void MainWindow::focus() {
+		BringWindowToTop(windowHandle);
 	}
 
 	void MainWindow::close() {

@@ -101,6 +101,10 @@ namespace winrt::Spacious::implementation {
 	}
 
 	void ListPage::editReminderByID(const int id) {
+		if (id == -1) {
+			tryEditReminder(-1);
+			return;
+		}
 		int index = 0;
 		for (const auto &reminder : store.reminders) {
 			if (reminder.id == id) {

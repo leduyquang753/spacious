@@ -17,8 +17,8 @@
 		/>
 		<ScrollViewer Grid.Row="1">
 			<StackPanel Orientation="Vertical" Margin="24,0,24,0">
-				<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type" Toggled="onTypeChange"/>
-				<TextBlock x:Name="StartDateLabel" Margin="0,0,0,8"/>
+				<ToggleSwitch x:Name="Type" x:Uid="ReminderDetailsPage_Type" Toggled="onTypeChange" Margin="0,8,0,0"/>
+				<TextBlock x:Name="StartDateLabel" TextWrapping="Wrap" Margin="0,8,0,8"/>
 				<StackPanel Orientation="Horizontal">
 					<NumberBox
 						x:Name="StartDay" x:Uid="ReminderDetailsPage_StartDay"
@@ -56,7 +56,7 @@
 					</Button>
 				</StackPanel>
 				<StackPanel x:Name="RecurringPeriodPanel" Orientation="Vertical">
-					<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" Margin="0,8,0,8"/>
+					<TextBlock x:Uid="ReminderDetailsPage_RecurringPeriod" TextWrapping="Wrap" Margin="0,16,0,8"/>
 					<StackPanel Orientation="Horizontal">
 						<NumberBox
 							x:Name="RecurringAmount"
@@ -73,7 +73,7 @@
 						</ComboBox>
 					</StackPanel>
 				</StackPanel>
-				<Grid ColumnDefinitions="*" Margin="0,8,0,0">
+				<Grid ColumnDefinitions="*" Margin="0,16,0,0">
 					<TextBox
 						Grid.Column="0"
 						x:Name="NotificationText" x:Uid="ReminderDetailsPage_NotificationText"

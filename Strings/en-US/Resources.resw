@@ -234,4 +234,59 @@
   <data name="ReminderDetailsPage_Type.OnContent" xml:space="preserve">
     <value>Recurring</value>
   </data>
+  <data name="SettingsPage_CreateSchedulerTask.Content" xml:space="preserve">
+    <value>Create task</value>
+  </data>
+  <data name="SettingsPage_CreateStartShortcut.Content" xml:space="preserve">
+    <value>Create Start shortcut</value>
+  </data>
+  <data name="SettingsPage_Dialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SettingsPage_Dialog_Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="SettingsPage_Dialog_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SettingsPage_Dialog_UnsavedEdit" xml:space="preserve">
+    <value>&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;Your notification settings are having &lt;Run FontWeight="Bold"&gt;unsaved changes&lt;/Run&gt;.&lt;/Paragraph&gt;</value>
+  </data>
+  <data name="SettingsPage_EnableNotifications.Header" xml:space="preserve">
+    <value>Reminder notifications</value>
+  </data>
+  <data name="SettingsPage_EnableNotifications.OffContent" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="SettingsPage_EnableNotifications.OnContent" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="SettingsPage_NeedsStartShortcut.Text" xml:space="preserve">
+    <value>The app needs to have a specially-created shortcut in the Start menu for notifications to function. Press the button below if the shortcut is missing.</value>
+  </data>
+  <data name="SettingsPage_NoScheduledTask.Text" xml:space="preserve">
+    <value>The daily task for the app to send reminder notifications is currently not present.</value>
+  </data>
+  <data name="SettingsPage_NotificationHour.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="SettingsPage_NotificationMinute.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="SettingsPage_NotificationTime.Text" xml:space="preserve">
+    <value>Notification time</value>
+  </data>
+  <data name="SettingsPage_RevertChanges.Content" xml:space="preserve">
+    <value>Revert changes</value>
+  </data>
+  <data name="SettingsPage_Save.Content" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SettingsPage_Title.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsPage_Version" xml:space="preserve">
+    <value>Version </value>
+    <comment>The version string will be directly appended to this string without spacing.</comment>
+  </data>
 </root>

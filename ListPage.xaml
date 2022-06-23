@@ -23,6 +23,7 @@
 							Grid.Column="0"
 							x:Uid="ListPage_ReminderList_Header"
 							Style="{ThemeResource TitleTextBlockStyle}"
+							TextTrimming="CharacterEllipsis"
 						/>
 						<Button
 							Grid.Column="1"
@@ -37,7 +38,7 @@
 				</ListView.Header>
 				<ListView.ItemTemplate>
 					<DataTemplate x:DataType="data:ReminderDisplayEntry">
-						<TextBlock Text="{x:Bind name}" x:Phase="1" Margin="0,5,0,5"/>
+						<TextBlock Text="{x:Bind name}" x:Phase="1" TextTrimming="CharacterEllipsis" Margin="0,5,0,5"/>
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>

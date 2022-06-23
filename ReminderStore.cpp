@@ -21,7 +21,7 @@ namespace Spacious {
 			L"LocalAppData", appDataPathString.data(),
 			static_cast<DWORD>(appDataPathString.size())
 		);
-		appDataPathString.pop_back(); // Get rid of the null terminator;
+		appDataPathString.pop_back(); // Get rid of the null terminator.
 		filePath = appDataPathString;
 		filePath /= "Spacious"s;
 		if (!std::filesystem::exists(filePath))

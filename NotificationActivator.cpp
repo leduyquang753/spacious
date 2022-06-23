@@ -6,6 +6,7 @@
 
 #include "App.xaml.h"
 #include "ListPage.xaml.h"
+#include "SettingsPage.xaml.h"
 #include "MainWindow.xaml.h"
 
 HRESULT STDMETHODCALLTYPE NotificationActivator::Activate(
@@ -16,10 +17,15 @@ HRESULT STDMETHODCALLTYPE NotificationActivator::Activate(
 ) {
 	using namespace winrt::Spacious::implementation;
 	auto &app = *App::instance;
-	auto listPage = app.window.as<MainWindow>()->MainFrame().Content().as<ListPage>();
-	if (listPage != nullptr) {
-		listPage->editReminderByID(std::stoi(invokedArgs));
-	}
+	auto window = app.window.as<MainWindow>();
+	auto frame = window->MainFrame();
+	auto listPage = frame.Content().try_as<ListPage>();
+	const int id = std::stoi(invokedArgs);
+	if (listPage == nullptr)
+		frame.Content().as<SettingsPage>()->onNavigateOut(id);
+	else
+		listPage->editReminderByID(id);
 	app.activatingFromToast = false;
+	window->focus();
 	return 0;
 }
