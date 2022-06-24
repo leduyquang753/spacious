@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 xliff-core-1.2-transitional.xsd">
+  <file datatype="xml" source-language="en-US" target-language="vi" original="SPACIOUS/STRINGS/EN-US/RESOURCES.RESW" tool-id="MultilingualAppToolkit" product-name="n/a" product-version="n/a" build-num="n/a">
+    <header>
+      <tool tool-id="MultilingualAppToolkit" tool-name="Multilingual App Toolkit" tool-version="4.1.12.0" tool-company="Microsoft" />
+    </header>
+    <body>
+      <group id="SPACIOUS/STRINGS/EN-US/RESOURCES.RESW" datatype="resx">
+        <trans-unit id="AppTitleName" translate="no" xml:space="preserve">
+          <source>Spacious</source>
+          <target state="final">Spacious</target>
+        </trans-unit>
+        <trans-unit id="ListPage_Add.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Add reminder</source>
+          <target state="translated">Thêm nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="ListPage_ReminderList_Header.Text" translate="yes" xml:space="preserve">
+          <source>Reminders</source>
+          <target state="translated">Nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="MainWindow.Title" translate="no" xml:space="preserve">
+          <source>Spacious</source>
+          <target state="final">Spacious</target>
+        </trans-unit>
+        <trans-unit id="MainWindow_MainNavigationView_List.Content" translate="yes" xml:space="preserve">
+          <source>Reminders</source>
+          <target state="translated">Nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="MainWindow_MainNavigationView_Settings.Content" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Cài đặt</target>
+        </trans-unit>
+        <trans-unit id="MainWindow_Title.Text" translate="no" xml:space="preserve">
+          <source>Spacious</source>
+          <target state="final">Spacious</target>
+        </trans-unit>
+        <trans-unit id="NoReminderSelectedPage_Text.Text" translate="yes" xml:space="preserve">
+          <source>Select a reminder from the list to the left to see its details or press the plus button to add a new one.</source>
+          <target state="translated">Chọn một nhắc nhở từ danh sách để xem chi tiết hoặc bấm nút dấu cộng để thêm mới.</target>
+        </trans-unit>
+        <trans-unit id="NotificationTitle" translate="yes" xml:space="preserve">
+          <source>Reminder</source>
+          <target state="translated">Nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Create.Content" translate="yes" xml:space="preserve">
+          <source>Create</source>
+          <target state="translated">Tạo</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Delete.Content" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <target state="translated">Xóa</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Hủy</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_Delete" translate="yes" xml:space="preserve">
+          <source>Delete</source>
+          <target state="translated">Xóa</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_Discard" translate="yes" xml:space="preserve">
+          <source>Discard</source>
+          <target state="translated">Bỏ</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_Save" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="translated">Lưu</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_SureToDelete" translate="yes" xml:space="preserve">
+          <source>Are you sure to delete the current reminder?</source>
+          <target state="translated">Bạn có chắc chắn muốn xóa nhắc nhở hiện tại?</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_UnsavedCreation" translate="yes" xml:space="preserve">
+          <source><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>You are having an <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>unsaved reminder<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></source>
+          <target state="translated"><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>Bạn đang có một <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>nhắc nhở chưa lưu<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Dialog_UnsavedEdit" translate="yes" xml:space="preserve">
+          <source><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>You are having a reminder with <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>unsaved changes<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></source>
+          <target state="translated"><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>Bạn đang có một nhắc nhở với <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>thay đổi chưa lưu<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Error_InvalidDate" translate="yes" xml:space="preserve">
+          <source>The date specified is invalid.</source>
+          <target state="translated">Ngày được chọn không hợp lệ.</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Error_NoName" translate="yes" xml:space="preserve">
+          <source>You must specify a name for the reminder.</source>
+          <target state="translated">Bạn phải viết một tên cho nhắc nhở.</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Name.PlaceholderText" translate="yes" xml:space="preserve">
+          <source>Reminder name</source>
+          <target state="translated">Tên nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_NotificationText.Header" translate="yes" xml:space="preserve">
+          <source>Notification text</source>
+          <target state="translated">Văn bản thông báo</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_NotificationText_EmptyNamePlaceholder" translate="yes" xml:space="preserve">
+          <source>[Reminder name]</source>
+          <target state="translated">[Tên nhắc nhở]</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_PickDate.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Pick date</source>
+          <target state="translated">Chọn ngày</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_RecurringPeriod.Text" translate="yes" xml:space="preserve">
+          <source>Recurring period</source>
+          <target state="translated">Thời gian lặp lại</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_RecurringPeriod_Days.Content" translate="yes" xml:space="preserve">
+          <source>days</source>
+          <target state="translated">ngày</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_RecurringPeriod_Months.Content" translate="yes" xml:space="preserve">
+          <source>months</source>
+          <target state="translated">tháng</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_RecurringPeriod_Years.Content" translate="yes" xml:space="preserve">
+          <source>years</source>
+          <target state="translated">năm</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_RevertChanges.Content" translate="yes" xml:space="preserve">
+          <source>Revert changes</source>
+          <target state="translated">Khôi phục thay đổi</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Save.Content" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="translated">Lưu</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_StartDateLabel_NonRecurring" translate="yes" xml:space="preserve">
+          <source>Date</source>
+          <target state="translated">Ngày</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_StartDateLabel_Recurring" translate="yes" xml:space="preserve">
+          <source>Start date</source>
+          <target state="translated">Ngày bắt đầu</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_StartDay.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Day</source>
+          <target state="translated">Ngày</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_StartMonth.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Month</source>
+          <target state="translated">Tháng</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_StartYear.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Year</source>
+          <target state="translated">Năm</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Type.Header" translate="yes" xml:space="preserve">
+          <source>Reminder type</source>
+          <target state="translated">Loại nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Type.OffContent" translate="yes" xml:space="preserve">
+          <source>Non-recurring</source>
+          <target state="translated">Không lặp</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Type.OnContent" translate="yes" xml:space="preserve">
+          <source>Recurring</source>
+          <target state="translated">Có lặp</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_CreateSchedulerTask.Content" translate="yes" xml:space="preserve">
+          <source>Create task</source>
+          <target state="translated">Tạo tác vụ</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_CreateStartShortcut.Content" translate="yes" xml:space="preserve">
+          <source>Create Start shortcut</source>
+          <target state="translated">Tạo lối tắt Start</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Dialog_Cancel" translate="yes" xml:space="preserve">
+          <source>Cancel</source>
+          <target state="translated">Hủy</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Dialog_Discard" translate="yes" xml:space="preserve">
+          <source>Discard</source>
+          <target state="translated">Bỏ</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Dialog_Save" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="translated">Lưu</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Dialog_UnsavedEdit" translate="yes" xml:space="preserve">
+          <source><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>Your notification settings are having <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>unsaved changes<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></source>
+          <target state="translated"><bpt id="1">&lt;Paragraph xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"&gt;</bpt>Cài đặt thông báo của bạn đang có <bpt id="2">&lt;Run FontWeight="Bold"&gt;</bpt>thay đổi chưa lưu<ept id="2">&lt;/Run&gt;</ept>.<ept id="1">&lt;/Paragraph&gt;</ept></target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_EnableNotifications.Header" translate="yes" xml:space="preserve">
+          <source>Reminder notifications</source>
+          <target state="translated">Thông báo nhắc nhở</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_EnableNotifications.OffContent" translate="yes" xml:space="preserve">
+          <source>Disabled</source>
+          <target state="translated">Tắt</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_EnableNotifications.OnContent" translate="yes" xml:space="preserve">
+          <source>Enabled</source>
+          <target state="translated">Bật</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_NeedsStartShortcut.Text" translate="yes" xml:space="preserve">
+          <source>The app needs to have a specially-created shortcut in the Start menu for notifications to function. Press the button below if the shortcut is missing.</source>
+          <target state="translated">Ứng dụng cần có một lối tắt được tạo một cách đặc biệt trong menu Start để thông báo có thể hoạt động. Nhấn nút phía dưới nếu hiện chưa có lối tắt.</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_NoScheduledTask.Text" translate="yes" xml:space="preserve">
+          <source>The daily task for the app to send reminder notifications is currently not present.</source>
+          <target state="translated">Tác vụ hàng ngày để ứng dụng gửi thông báo nhắc nhở hiện chưa tồn tại.</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_NotificationHour.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Hour</source>
+          <target state="translated">Giờ</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_NotificationMinute.[using:Microsoft.UI.Xaml.Controls]ToolTipService.ToolTip" translate="yes" xml:space="preserve">
+          <source>Minute</source>
+          <target state="translated">Phút</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_NotificationTime.Text" translate="yes" xml:space="preserve">
+          <source>Notification time</source>
+          <target state="translated">Thời gian thông báo</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_RevertChanges.Content" translate="yes" xml:space="preserve">
+          <source>Revert changes</source>
+          <target state="translated">Khôi phục thay đổi</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Save.Content" translate="yes" xml:space="preserve">
+          <source>Save</source>
+          <target state="translated">Lưu</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Title.Text" translate="yes" xml:space="preserve">
+          <source>Settings</source>
+          <target state="translated">Cài đặt</target>
+        </trans-unit>
+        <trans-unit id="SettingsPage_Version" translate="yes" xml:space="preserve">
+          <source>Version </source>
+          <target state="translated">Phiên bản </target>
+          <note from="MultilingualBuild" annotates="source" priority="2">The version string will be directly appended to this string without spacing.</note>
+        </trans-unit>
+      </group>
+    </body>
+  </file>
+</xliff>

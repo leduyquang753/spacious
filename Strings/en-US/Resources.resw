@@ -139,7 +139,7 @@
     <value>Spacious</value>
   </data>
   <data name="NoReminderSelectedPage_Text.Text" xml:space="preserve">
-    <value>Select a reminder from the list to the left to see its details or click the plus button to add a new one.</value>
+    <value>Select a reminder from the list to the left to see its details or press the plus button to add a new one.</value>
   </data>
   <data name="NotificationTitle" xml:space="preserve">
     <value>Reminder</value>
@@ -206,9 +206,6 @@
   </data>
   <data name="ReminderDetailsPage_Save.Content" xml:space="preserve">
     <value>Save</value>
-  </data>
-  <data name="ReminderDetailsPage_StartDate.Text" xml:space="preserve">
-    <value>Start date</value>
   </data>
   <data name="ReminderDetailsPage_StartDateLabel_NonRecurring" xml:space="preserve">
     <value>Date</value>

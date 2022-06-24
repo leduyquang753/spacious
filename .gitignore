@@ -1,5 +1,7 @@
 /.vs
 /Generated files
 /packages
+/Strings
+!/Strings/en-US
 /x64
 *.swp

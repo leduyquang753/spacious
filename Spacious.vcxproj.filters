@@ -45,19 +45,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Strings">
-      <UniqueIdentifier>{6ec10883-e53c-4398-8c11-74e1c321fcee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Strings\en-US">
-      <UniqueIdentifier>{6246e163-4554-43f3-8f80-79e9109ee5f9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Foreign">
       <UniqueIdentifier>{6b513f85-7673-4cca-af90-fc1415a9d673}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\en-US\Resources.resw">
-      <Filter>Strings\en-US</Filter>
-    </PRIResource>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+    <PRIResource Include="Strings\ja\Resources.resw" />
+    <PRIResource Include="Strings\vi\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <XliffResource Include="MultilingualResources\Spacious.ja.xlf" />
+    <XliffResource Include="MultilingualResources\Spacious.vi.xlf" />
   </ItemGroup>
 </Project>
