@@ -18,6 +18,6 @@ namespace Spacious {
 		RecurringUnit recurringUnit;
 		std::wstring notificationText;
 
-		bool hasNotification(const Date &date) const;
+		bool hasNotification(const Date &previousDate, const Date &date) const;
 	};
 }
