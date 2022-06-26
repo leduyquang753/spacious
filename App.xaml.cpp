@@ -109,14 +109,29 @@ namespace winrt::Spacious::implementation {
 			store.load();
 			for (const auto &reminder : store.reminders) {
 				if (reminder.hasNotification(previousDate, today)) {
+					std::wstring notificationXML;
+					for (
+						const wchar_t c :
+						reminder.notificationText.empty() ? reminder.name : reminder.notificationText
+					) switch (c) {
+						case L'&':
+							notificationXML += L"&amp;";
+							break;
+						case L'>':
+							notificationXML += L"&gt;";
+							break;
+						case L'<':
+							notificationXML += L"&lt;";
+							break;
+						default:
+							notificationXML += c;
+							break;
+					}
 					DesktopNotificationManagerCompat::CreateXmlDocumentFromString(
 						(L"<toast scenario=\"reminder\" launch=\""s + std::to_wstring(reminder.id) + L"\">"
 							"<visual><binding template = 'ToastGeneric'>"
 								"<text>" + resourceLoader.GetString(L"NotificationTitle") + L"</text>"
-								"<text>" + (
-									reminder.notificationText.empty()
-									? reminder.name : reminder.notificationText
-								) + L"</text></binding></visual>"
+								"<text>" + notificationXML + L"</text></binding></visual>"
 							"<commands><command id = \"dismiss\"/></commands>"
 						"</toast>").c_str(),
 						&doc
