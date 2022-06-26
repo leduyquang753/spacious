@@ -44,6 +44,10 @@ namespace winrt::Spacious::implementation {
 				const winrt::Windows::Foundation::IInspectable &source,
 				const winrt::Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs &args
 			);
+			void onReorderReminder(
+				const winrt::Microsoft::UI::Xaml::Controls::ListViewBase &source,
+				const winrt::Microsoft::UI::Xaml::Controls::DragItemsCompletedEventArgs &args
+			);
 	};
 }
 

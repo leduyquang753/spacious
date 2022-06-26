@@ -16,7 +16,14 @@
 		PaneBackground="Transparent"
 	>
 		<SplitView.Pane>
-			<ListView x:Name="ReminderList" SelectionChanged="onSelectReminder">
+			<ListView
+				x:Name="ReminderList"
+				CanDragItems="True"
+				CanReorderItems="True"
+				AllowDrop="True"
+				SelectionChanged="onSelectReminder"
+				DragItemsCompleted="onReorderReminder"
+			>
 				<ListView.Header>
 					<Grid ColumnDefinitions="*, Auto" Margin="16,8,16,8">
 						<TextBlock

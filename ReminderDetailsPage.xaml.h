@@ -16,7 +16,6 @@ namespace winrt::Spacious::implementation {
 			ListPage &parent;
 			winrt::Microsoft::Windows::ApplicationModel::Resources::ResourceLoader &resourceLoader
 				= App::instance->resourceLoader;
-			int editingIndex;
 			bool
 				validationDisabled = true,
 				beginningPickingDate = false,
@@ -31,6 +30,7 @@ namespace winrt::Spacious::implementation {
 			void clearError();
 			winrt::Windows::Foundation::IAsyncAction del();
 		public:
+			int editingIndex;
 			ReminderDetailsPage(const winrt::Spacious::ListPage &parent, int index);
 			bool hasUnsavedChanges();
 			void save();

@@ -1,6 +1,7 @@
 namespace Spacious {
 	struct ReminderDisplayEntry {
 		String name;
+		Int32 id;
 	};
 	
 	[default_interface]

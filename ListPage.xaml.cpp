@@ -27,7 +27,7 @@ namespace winrt::Spacious::implementation {
 
 		store.load();
 		for (const auto &reminder : store.reminders)
-			list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
+			list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), reminder.id}));
 		ReminderList().ItemsSource(List());
 
 		DetailsPane().Navigate(winrt::xaml_typename<NoReminderSelectedPage>());
@@ -45,7 +45,7 @@ namespace winrt::Spacious::implementation {
 		store.reminders.push_back(reminder);
 		store.reminders.back().id = store.nextID++;
 		updating = true;
-		list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
+		list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), reminder.id}));
 		updating = false;
 		store.save();
 	}
@@ -55,7 +55,7 @@ namespace winrt::Spacious::implementation {
 		store.reminders[index] = reminder;
 		store.reminders[index].id = id;
 		updating = true;
-		list.SetAt(index, winrt::box_value(ReminderDisplayEntry{reminder.name.c_str()}));
+		list.SetAt(index, winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), reminder.id}));
 		ReminderList().SelectedIndex(index);
 		updating = false;
 		store.save();
@@ -160,5 +160,32 @@ namespace winrt::Spacious::implementation {
 		if (updating || App::instance->activatingFromToast) return;
 		const int index = ReminderList().SelectedIndex();
 		tryEditReminder(index);
+	}
+	
+	void ListPage::onReorderReminder(
+		const winrt::Microsoft::UI::Xaml::Controls::ListViewBase &source,
+		const winrt::Microsoft::UI::Xaml::Controls::DragItemsCompletedEventArgs &args
+	) {
+		const int id = args.Items().GetAt(0).as<ReminderDisplayEntry>().id;
+		unsigned int newIndex, oldIndex, size = list.Size();
+		for (newIndex = 0; newIndex != size; newIndex++)
+			if (list.GetAt(newIndex).as<ReminderDisplayEntry>().id == id) break;
+		size = static_cast<unsigned int>(store.reminders.size());
+		for (oldIndex = 0; oldIndex != size; oldIndex++)
+			if (store.reminders[oldIndex].id == id) break;
+		if (newIndex == oldIndex) return;
+		auto reminder = store.reminders[oldIndex];
+		store.reminders.erase(store.reminders.begin() + oldIndex);
+		store.reminders.insert(store.reminders.begin() + newIndex, reminder);
+		store.save();
+		if (editingIndex >= 0) {
+			if (static_cast<unsigned int>(editingIndex) == oldIndex) {
+				editingIndex = detailsPage->editingIndex = newIndex;
+			} else {
+				if (oldIndex < static_cast<unsigned int>(editingIndex)) --editingIndex;
+				if (newIndex <= static_cast<unsigned int>(editingIndex)) ++editingIndex;
+				detailsPage->editingIndex = editingIndex;
+			}
+		}
 	}
 }
