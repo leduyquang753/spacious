@@ -18,9 +18,11 @@ using namespace winrt::Microsoft::UI::Xaml::Markup;
 using namespace winrt::Windows::Foundation;
 
 namespace winrt::Spacious::implementation {
-	ReminderDetailsPage::ReminderDetailsPage(const winrt::Spacious::ListPage &parentProjection, int index):
-		parent(*winrt::get_self<ListPage>(parentProjection)), editingIndex(index)
+	ReminderDetailsPage::ReminderDetailsPage(const winrt::Spacious::ListPage &parentProjection):
+		parent(*winrt::get_self<ListPage>(parentProjection))
 	{
+		const int index = parent.getEditingIndex();
+		
 		InitializeComponent();
 		CreatingButtons().Visibility(index == -1 ? Visibility::Visible : Visibility::Collapsed);
 		EditingButtons().Visibility(index == -1 ? Visibility::Collapsed : Visibility::Visible);
@@ -43,7 +45,7 @@ namespace winrt::Spacious::implementation {
 	}
 
 	void ReminderDetailsPage::loadReminderInfo() {
-		const auto &reminder = parent.getReminder(editingIndex);
+		const auto &reminder = parent.getReminder(parent.getEditingIndex());
 		Name().Text(reminder.name.c_str());
 		Type().IsOn(reminder.isRecurring);
 		StartDay().Value(reminder.startDate.day());
@@ -102,6 +104,7 @@ namespace winrt::Spacious::implementation {
 	}
 
 	bool ReminderDetailsPage::hasUnsavedChanges() {
+		const int editingIndex = parent.getEditingIndex();
 		if (editingIndex == -1) {
 			return
 				!Name().Text().empty()
@@ -144,6 +147,7 @@ namespace winrt::Spacious::implementation {
 			),
 			std::wstring(static_cast<std::wstring_view>(NotificationText().Text()))
 		};
+		const int editingIndex = parent.getEditingIndex();
 		if (editingIndex == -1) {
 			parent.addReminder(reminder);
 			parent.closeReminderDetails();
@@ -168,7 +172,7 @@ namespace winrt::Spacious::implementation {
 		dialog.CloseButtonText(resourceLoader.GetString(L"ReminderDetailsPage_Dialog_Cancel"));
 		dialog.DefaultButton(ContentDialogButton::Primary);
 		if (co_await dialog.ShowAsync() == ContentDialogResult::Primary) {
-			parent.deleteReminder(editingIndex);
+			parent.deleteReminder(parent.getEditingIndex());
 			parent.closeReminderDetails();
 		}
 	}

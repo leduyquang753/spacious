@@ -71,7 +71,7 @@ namespace winrt::Spacious::implementation {
 
 	void ListPage::editReminder(const int index) {
 		editingIndex = index;
-		DetailsPane().Content(winrt::Spacious::ReminderDetailsPage(*this, index));
+		DetailsPane().Content(winrt::Spacious::ReminderDetailsPage(*this));
 		detailsPage = DetailsPane().Content().as<winrt::Spacious::implementation::ReminderDetailsPage>().get();
 		updating = true;
 		ReminderList().SelectedIndex(index);
@@ -113,6 +113,10 @@ namespace winrt::Spacious::implementation {
 			}
 			++index;
 		}
+	}
+
+	int ListPage::getEditingIndex() {
+		return editingIndex;
 	}
 
 	winrt::Windows::Foundation::IAsyncAction ListPage::showUnsavedDialog(const int index) {
@@ -180,11 +184,10 @@ namespace winrt::Spacious::implementation {
 		store.save();
 		if (editingIndex >= 0) {
 			if (static_cast<unsigned int>(editingIndex) == oldIndex) {
-				editingIndex = detailsPage->editingIndex = newIndex;
+				editingIndex = newIndex;
 			} else {
 				if (oldIndex < static_cast<unsigned int>(editingIndex)) --editingIndex;
 				if (newIndex <= static_cast<unsigned int>(editingIndex)) ++editingIndex;
-				detailsPage->editingIndex = editingIndex;
 			}
 		}
 	}

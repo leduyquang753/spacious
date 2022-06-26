@@ -30,8 +30,7 @@ namespace winrt::Spacious::implementation {
 			void clearError();
 			winrt::Windows::Foundation::IAsyncAction del();
 		public:
-			int editingIndex;
-			ReminderDetailsPage(const winrt::Spacious::ListPage &parent, int index);
+			ReminderDetailsPage(const winrt::Spacious::ListPage &parent);
 			bool hasUnsavedChanges();
 			void save();
 			void onNameChange(

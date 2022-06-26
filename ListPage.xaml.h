@@ -36,6 +36,7 @@ namespace winrt::Spacious::implementation {
 			void tryEditReminder(const int index);
 			void editReminderByID(const int id);
 			void closeReminderDetails();
+			int getEditingIndex();
 			void onCreateCommand(
 				const winrt::Windows::Foundation::IInspectable &source,
 				const winrt::Microsoft::UI::Xaml::RoutedEventArgs &args
