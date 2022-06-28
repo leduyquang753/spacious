@@ -161,6 +161,7 @@
       <DependentUpon>SettingsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Version.h" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +234,7 @@
     <ClCompile Include="SettingsPage_StartShortcutCreator.cpp">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="App.idl">

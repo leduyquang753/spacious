@@ -26,6 +26,7 @@
     <ClCompile Include="ReminderStore.cpp" />
     <ClCompile Include="Reminder.cpp" />
     <ClCompile Include="SettingsPage_StartShortcutCreator.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Reminder.h" />
     <ClInclude Include="ReminderStore.h" />
     <ClInclude Include="Version.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <ItemGroup>
     <Manifest Include="app.manifest" />

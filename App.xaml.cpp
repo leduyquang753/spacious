@@ -16,6 +16,7 @@
 
 #include "Date.h"
 #include "ReminderStore.h"
+#include "Utils.h"
 
 #include "MainWindow.xaml.h"
 #include "NotificationActivator.h"
@@ -76,16 +77,7 @@ namespace winrt::Spacious::implementation {
 	void App::sendReminderNotifications() {
 		using namespace std::string_literals;
 		
-		std::wstring appDataPathString(
-			GetEnvironmentVariable(L"LocalAppData", nullptr, 0), 0
-		);
-		GetEnvironmentVariable(
-			L"LocalAppData", appDataPathString.data(),
-			static_cast<DWORD>(appDataPathString.size())
-		);
-		appDataPathString.pop_back(); // Get rid of the null terminator.
-		std::filesystem::path filePath = appDataPathString;
-		filePath /= "Spacious"s;
+		std::filesystem::path filePath = ::Spacious::Utils::getDataFolderPath();
 		if (std::filesystem::exists(filePath)) {
 			const auto timeT = std::time(nullptr);
 			const auto &cTime = *std::localtime(&timeT);

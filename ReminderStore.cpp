@@ -7,6 +7,7 @@
 #include <string>
 
 #include "Date.h"
+#include "Utils.h"
 
 #include "ReminderStore.h"
 
@@ -14,16 +15,7 @@ namespace Spacious {
 	void ReminderStore::load() {
 		using namespace std::string_literals;
 		
-		std::wstring appDataPathString(
-			GetEnvironmentVariable(L"LocalAppData", nullptr, 0), 0
-		);
-		GetEnvironmentVariable(
-			L"LocalAppData", appDataPathString.data(),
-			static_cast<DWORD>(appDataPathString.size())
-		);
-		appDataPathString.pop_back(); // Get rid of the null terminator.
-		filePath = appDataPathString;
-		filePath /= "Spacious"s;
+		filePath = Utils::getDataFolderPath();
 		if (!std::filesystem::exists(filePath))
 			std::filesystem::create_directory(filePath);
 		filePath /= "Reminders.txt"s;
