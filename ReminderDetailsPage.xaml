@@ -49,7 +49,11 @@
 					<Button x:Uid="ReminderDetailsPage_PickDate" Margin="8,0,0,0" Click="onBeginPickDate">
 						<Button.Flyout>
 							<Flyout>
-								<CalendarView Name="DatePicker" SelectedDatesChanged="onPickDate"/>
+								<CalendarView
+									Name="DatePicker"
+									FirstDayOfWeek="Monday"
+									SelectedDatesChanged="onPickDate"
+								/>
 							</Flyout>
 						</Button.Flyout>
 						<FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE787;"/>
