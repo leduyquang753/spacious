@@ -45,7 +45,7 @@ namespace winrt::Spacious::implementation {
 		store.reminders.push_back(reminder);
 		store.reminders.back().id = store.nextID++;
 		updating = true;
-		list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), reminder.id}));
+		list.Append(winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), store.reminders.back().id}));
 		updating = false;
 		store.save();
 	}
@@ -55,7 +55,7 @@ namespace winrt::Spacious::implementation {
 		store.reminders[index] = reminder;
 		store.reminders[index].id = id;
 		updating = true;
-		list.SetAt(index, winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), reminder.id}));
+		list.SetAt(index, winrt::box_value(ReminderDisplayEntry{reminder.name.c_str(), store.reminders[index].id}));
 		ReminderList().SelectedIndex(index);
 		updating = false;
 		store.save();
