@@ -88,9 +88,8 @@
 		<Grid Grid.Row="2" ColumnDefinitions="*, Auto" Margin="24,8,24,16">
 			<TextBlock
 				Grid.Column="0"
-				Name="Error"
+				Name="Info"
 				Text=""
-				Foreground="Red"
 				TextTrimming="CharacterEllipsis"
 				VerticalAlignment="Center"
 			/>

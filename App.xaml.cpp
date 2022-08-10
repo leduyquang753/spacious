@@ -1,6 +1,5 @@
 ﻿#include "pch.h"
 
-#include <ctime>
 #include <filesystem>
 #include <fstream>
 #include <string>
@@ -79,9 +78,7 @@ namespace winrt::Spacious::implementation {
 		
 		std::filesystem::path filePath = ::Spacious::Utils::getDataFolderPath();
 		if (std::filesystem::exists(filePath)) {
-			const auto timeT = std::time(nullptr);
-			const auto &cTime = *std::localtime(&timeT);
-			::Spacious::Date today(cTime.tm_mday, cTime.tm_mon+1, cTime.tm_year+1900);
+			auto today = ::Spacious::Date::today();
 			filePath /= "Previous notification date.txt"s;
 			int previousDateIndex = today.index() - 1;
 			if (std::filesystem::exists(filePath)) {

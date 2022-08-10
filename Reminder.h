@@ -17,6 +17,11 @@ namespace Spacious {
 		int recurringAmount;
 		RecurringUnit recurringUnit;
 		std::wstring notificationText;
+		
+		static Date getNextNotification(
+			bool isRecurring, const Date &startDate, int recurringAmount, RecurringUnit recurringUnit,
+			const Date &today
+		);
 
 		bool hasNotification(const Date &previousDate, const Date &date) const;
 	};

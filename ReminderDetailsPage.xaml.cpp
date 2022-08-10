@@ -15,7 +15,9 @@ using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Microsoft::UI::Xaml::Documents;
 using namespace winrt::Microsoft::UI::Xaml::Markup;
+using namespace winrt::Microsoft::UI::Xaml::Media;
 using namespace winrt::Windows::Foundation;
+using namespace winrt::Windows::UI;
 
 namespace winrt::Spacious::implementation {
 	ReminderDetailsPage::ReminderDetailsPage(const winrt::Spacious::ListPage &parentProjection):
@@ -92,13 +94,43 @@ namespace winrt::Spacious::implementation {
 	}
 
 	void ReminderDetailsPage::setError(const hstring &key) {
-		Error().Text(resourceLoader.GetString(key));
+		Info().Foreground(SolidColorBrush(Colors::Red()));
+		Info().Text(resourceLoader.GetString(key));
 		CreateButton().IsEnabled(false);
 		SaveButton().IsEnabled(false);
 	}
 
 	void ReminderDetailsPage::clearError() {
-		Error().Text(L"");
+		Info().ClearValue(TextBlock::ForegroundProperty());
+		const ::Spacious::Date
+			today = ::Spacious::Date::today(),
+			nextNotification = ::Spacious::Reminder::getNextNotification(
+				Type().IsOn(),
+				{
+					static_cast<int>(StartDay().Value()),
+					static_cast<int>(StartMonth().Value()),
+					static_cast<int>(StartYear().Value())
+				},
+				static_cast<int>(RecurringAmount().Value()),
+				static_cast<::Spacious::Reminder::RecurringUnit>(
+					static_cast<int>(RecurringUnit().SelectedIndex())
+				),
+				today
+			);
+		if (today.index() >= nextNotification.index()) {
+			Info().Text(resourceLoader.GetString(L"ReminderDetailsPage_Info_NotificationDatePassed"));
+		} else {
+			std::wstring text = resourceLoader.GetString(L"ReminderDetailsPage_Info_NextNotification_First").c_str();
+			text += std::to_wstring(nextNotification.index() - today.index());
+			text += resourceLoader.GetString(L"ReminderDetailsPage_Info_NextNotification_Second").c_str();
+			text += std::to_wstring(nextNotification.day());
+			text += '/';
+			text += std::to_wstring(nextNotification.month());
+			text += '/';
+			text += std::to_wstring(nextNotification.year());
+			text += resourceLoader.GetString(L"ReminderDetailsPage_Info_NextNotification_Third").c_str();
+			Info().Text(text);
+		}
 		CreateButton().IsEnabled(true);
 		SaveButton().IsEnabled(true);
 	}
@@ -184,6 +216,7 @@ namespace winrt::Spacious::implementation {
 
 	void ReminderDetailsPage::onTypeChange(const IInspectable &source, const RoutedEventArgs &args) {
 		updateType();
+		validate();
 	}
 
 	void ReminderDetailsPage::onStartDateElementChange(
@@ -237,6 +270,7 @@ namespace winrt::Spacious::implementation {
 		updating = true;
 		source.Value(static_cast<int>(source.Value()));
 		updating = false;
+		validate();
 	}
 	
 	void ReminderDetailsPage::onRevertChanges(const IInspectable &source, const RoutedEventArgs &args) {

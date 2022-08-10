@@ -231,6 +231,22 @@
           <target state="translated">Phiên bản </target>
           <note from="MultilingualBuild" annotates="source" priority="2">The version string will be directly appended to this string without spacing.</note>
         </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Info_NextNotification_First" translate="yes" xml:space="preserve">
+          <source>Next notification in </source>
+          <target state="translated">Thông báo tiếp theo trong </target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Info_NextNotification_Second" translate="yes" xml:space="preserve">
+          <source> day(s), on </source>
+          <target state="translated"> ngày, vào ngày </target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Info_NextNotification_Third" translate="yes" xml:space="preserve">
+          <source>.</source>
+          <target state="translated">.</target>
+        </trans-unit>
+        <trans-unit id="ReminderDetailsPage_Info_NotificationDatePassed" translate="yes" xml:space="preserve">
+          <source>The notification date has passed.</source>
+          <target state="translated">Ngày thông báo đã qua.</target>
+        </trans-unit>
       </group>
     </body>
   </file>

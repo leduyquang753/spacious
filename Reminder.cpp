@@ -3,6 +3,52 @@
 #include "Reminder.h"
 
 namespace Spacious {
+	#define monthIndex(d) (d.year()*12 + d.month())
+
+	Date Reminder::getNextNotification(
+		bool isRecurring, const Date &startDate, int recurringAmount, RecurringUnit recurringUnit,
+		const Date &today
+	) {
+		if (!isRecurring || today.index() < startDate.index()) return startDate;
+		switch (recurringUnit) {
+			case RecurringUnit::DAYS: {
+				return {
+					startDate.index()
+					+ (today.index()-startDate.index()+recurringAmount) / recurringAmount * recurringAmount
+				};
+			}
+			case RecurringUnit::MONTHS: {
+				const int
+					startMonthIndex = monthIndex(startDate),
+					currentMonthIndex = monthIndex(today);
+				int nextMonthIndex
+						= startMonthIndex
+						+ (currentMonthIndex-startMonthIndex) / recurringAmount * recurringAmount;
+				if (
+					currentMonthIndex > nextMonthIndex
+					|| (currentMonthIndex == nextMonthIndex && today.day() >= startDate.day())
+				) nextMonthIndex += recurringAmount;
+				return {startDate.day(), nextMonthIndex % 12 + 1, nextMonthIndex / 12};
+			}
+			case RecurringUnit::YEARS: {
+				int nextYear
+					= startDate.year()
+					+ (today.year()-startDate.year()) / recurringAmount * recurringAmount;
+				if (
+					today.year() > nextYear
+					|| (today.year() == nextYear && (
+						today.month() > startDate.month()
+						|| (today.month() == startDate.month() && today.day() >= startDate.day())
+					))
+				) nextYear += recurringAmount;
+				return {startDate.day(), startDate.month(), nextYear};
+			}
+			default: {
+				return startDate;
+			}
+		}
+	}
+	
 	bool Reminder::hasNotification(const Date &previousDate, const Date &date) const {
 		if (date.index() < startDate.index()) return false;
 		if (isRecurring) {
@@ -13,7 +59,6 @@ namespace Spacious {
 					return (previousDate.index()-mod) / recurringAmount < (date.index()-mod) / recurringAmount;
 				}
 				case RecurringUnit::MONTHS: {
-					#define monthIndex(d) (d.year()*12 + d.month())
 					const int
 						mod = monthIndex(startDate) % recurringAmount,
 						previousDateMonthIndex = monthIndex(previousDate),
@@ -33,7 +78,6 @@ namespace Spacious {
 							|| date.day() >= startDate.day()
 						)
 					);
-					#undef monthIndex
 				}
 				case RecurringUnit::YEARS: {
 					const int
@@ -65,4 +109,6 @@ namespace Spacious {
 			return startDate.index() > previousDate.index() && startDate.index() <= date.index();
 		}
 	}
+
+	#undef monthIndex
 }

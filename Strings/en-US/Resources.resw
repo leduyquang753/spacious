@@ -177,6 +177,18 @@
   <data name="ReminderDetailsPage_Error_NoName" xml:space="preserve">
     <value>You must specify a name for the reminder.</value>
   </data>
+  <data name="ReminderDetailsPage_Info_NextNotification_First" xml:space="preserve">
+    <value>Next notification in </value>
+  </data>
+  <data name="ReminderDetailsPage_Info_NextNotification_Second" xml:space="preserve">
+    <value> day(s), on </value>
+  </data>
+  <data name="ReminderDetailsPage_Info_NextNotification_Third" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="ReminderDetailsPage_Info_NotificationDatePassed" xml:space="preserve">
+    <value>The notification date has passed.</value>
+  </data>
   <data name="ReminderDetailsPage_Name.PlaceholderText" xml:space="preserve">
     <value>Reminder name</value>
   </data>

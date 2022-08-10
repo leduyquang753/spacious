@@ -1,4 +1,5 @@
 #include <array>
+#include <ctime>
 #include <stdexcept>
 #include <string>
 
@@ -38,6 +39,12 @@ namespace Spacious {
 			year >= 1900 && year <= 2100
 			&& month >= 1 && month <= 12
 			&& day >= 1 && day <= (isLeapYear(year) ? monthDaysLeap : monthDays)[month];
+	}
+
+	Date Date::today() {
+		const auto timeT = std::time(nullptr);
+		const auto &cTime = *std::localtime(&timeT);
+		return {cTime.tm_mday, cTime.tm_mon+1, cTime.tm_year+1900};
 	}
 
 	Date::Date(const int day, const int month, const int year): m_day(day), m_month(month), m_year(year) {
