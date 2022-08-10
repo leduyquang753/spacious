@@ -1,0 +1,33 @@
+#include <Windows.h>
+
+1001 ICON "Icon.ico"
+
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+FILEFLAGS 0
+FILEOS VOS__WINDOWS32
+FILETYPE VFT_APP
+FILESUBTYPE VFT2_UNKNOWN
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "040904E4"
+		BEGIN
+			VALUE "CompanyName", "Lê Duy Quang\0"
+			VALUE "FileDescription", "A desktop reminder app based on far apart events.\0"
+			VALUE "FileVersion", "1.0.0.0\0"
+			VALUE "InternalName", "Spacious\0"
+			VALUE "LegalCopyright", "© 2022 Lê Duy Quang"
+			VALUE "OriginalFilename", "Spacious.exe\0"
+			VALUE "ProductName", "Spacious\0"
+			VALUE "ProductVersion", "1.0.0\0"
+		END
+	END
+
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x409, 1252
+	END
+END

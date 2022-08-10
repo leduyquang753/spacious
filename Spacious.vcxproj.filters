@@ -60,4 +60,7 @@
     <XliffResource Include="MultilingualResources\Spacious.ja.xlf" />
     <XliffResource Include="MultilingualResources\Spacious.vi.xlf" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resources.rc" />
+  </ItemGroup>
 </Project>

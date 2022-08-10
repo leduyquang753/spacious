@@ -3,7 +3,7 @@
 #include "Reminder.h"
 
 namespace Spacious {
-	#define monthIndex(d) (d.year()*12 + d.month())
+	#define monthIndex(d) (d.year()*12 + d.month() - 1)
 
 	Date Reminder::getNextNotification(
 		bool isRecurring, const Date &startDate, int recurringAmount, RecurringUnit recurringUnit,
