@@ -3,7 +3,7 @@
 1001 ICON "Icon.ico"
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION 1,0,0,0
+FILEVERSION 1,0,0,1
 PRODUCTVERSION 1,0,0,0
 FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
 FILEFLAGS 0
@@ -17,7 +17,7 @@ BEGIN
 		BEGIN
 			VALUE "CompanyName", "Lê Duy Quang\0"
 			VALUE "FileDescription", "A desktop reminder app based on far apart events.\0"
-			VALUE "FileVersion", "1.0.0.0\0"
+			VALUE "FileVersion", "1.0.0.1\0"
 			VALUE "InternalName", "Spacious\0"
 			VALUE "LegalCopyright", "© 2022 Lê Duy Quang"
 			VALUE "OriginalFilename", "Spacious.exe\0"

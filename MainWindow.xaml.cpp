@@ -47,6 +47,16 @@ namespace winrt::Spacious::implementation {
 		auto windowNative = try_as<IWindowNative>();
 		winrt::check_bool(windowNative);
 		windowNative->get_WindowHandle(&windowHandle);
+
+		// Set the app icon.
+		const HINSTANCE moduleHandle = GetModuleHandle(nullptr);
+		const auto iconResource = MAKEINTRESOURCE(1001);
+		SendMessageW(windowHandle, WM_SETICON, ICON_BIG, reinterpret_cast<LPARAM>(LoadImageW(
+			moduleHandle, iconResource, IMAGE_ICON, 24, 24, LR_SHARED
+		)));
+		SendMessageW(windowHandle, WM_SETICON, ICON_SMALL, reinterpret_cast<LPARAM>(LoadImageW(
+			moduleHandle, iconResource, IMAGE_ICON, 16, 16, LR_SHARED
+		)));
 		
 		// Configure custom title bar.
 		auto appWindow = getAppWindow();
