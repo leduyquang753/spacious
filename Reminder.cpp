@@ -22,8 +22,8 @@ namespace Spacious {
 					startMonthIndex = monthIndex(startDate),
 					currentMonthIndex = monthIndex(today);
 				int nextMonthIndex
-						= startMonthIndex
-						+ (currentMonthIndex-startMonthIndex) / recurringAmount * recurringAmount;
+					= startMonthIndex
+					+ (currentMonthIndex-startMonthIndex) / recurringAmount * recurringAmount;
 				if (
 					currentMonthIndex > nextMonthIndex
 					|| (currentMonthIndex == nextMonthIndex && today.day() >= startDate.day())
@@ -52,7 +52,6 @@ namespace Spacious {
 	bool Reminder::hasNotification(const Date &previousDate, const Date &date) const {
 		if (date.index() < startDate.index()) return false;
 		if (isRecurring) {
-			int difference = 0;
 			switch (recurringUnit) {
 				case RecurringUnit::DAYS: {
 					const int mod = startDate.index() % recurringAmount;
@@ -104,9 +103,8 @@ namespace Spacious {
 					);
 				}
 			}
-			return difference >= 0 && difference % recurringAmount == 0;
 		} else {
-			return startDate.index() > previousDate.index() && startDate.index() <= date.index();
+			return startDate.index() > previousDate.index();
 		}
 	}
 
