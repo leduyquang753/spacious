@@ -57,6 +57,10 @@ namespace winrt::Spacious::implementation {
 				const winrt::Microsoft::UI::Xaml::Controls::NumberBox &source,
 				const winrt::Microsoft::UI::Xaml::Controls::NumberBoxValueChangedEventArgs &args
 			);
+			void onRecurringUnitChange(
+				const winrt::Windows::Foundation::IInspectable &source,
+				const winrt::Microsoft::UI::Xaml::RoutedEventArgs &args
+			);
 			void onRevertChanges(
 				const winrt::Windows::Foundation::IInspectable &source,
 				const winrt::Microsoft::UI::Xaml::RoutedEventArgs &args

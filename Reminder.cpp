@@ -28,7 +28,7 @@ namespace Spacious {
 					currentMonthIndex > nextMonthIndex
 					|| (currentMonthIndex == nextMonthIndex && today.day() >= startDate.day())
 				) nextMonthIndex += recurringAmount;
-				return {startDate.day(), nextMonthIndex % 12 + 1, nextMonthIndex / 12};
+				return Date::clamped(startDate.day(), nextMonthIndex % 12 + 1, nextMonthIndex / 12);
 			}
 			case RecurringUnit::YEARS: {
 				int nextYear
@@ -41,7 +41,7 @@ namespace Spacious {
 						|| (today.month() == startDate.month() && today.day() >= startDate.day())
 					))
 				) nextYear += recurringAmount;
-				return {startDate.day(), startDate.month(), nextYear};
+				return Date::clamped(startDate.day(), startDate.month(), nextYear);
 			}
 			default: {
 				return startDate;
@@ -102,6 +102,7 @@ namespace Spacious {
 						)
 					);
 				}
+				default: return false;
 			}
 		} else {
 			return startDate.index() > previousDate.index();

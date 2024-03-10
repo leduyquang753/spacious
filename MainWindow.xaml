@@ -7,6 +7,9 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 >
+	<Window.SystemBackdrop>
+		<MicaBackdrop Kind="BaseAlt"/>
+	</Window.SystemBackdrop>
 	<Grid RowDefinitions="Auto, *">
 		<Grid ColumnDefinitions="Auto, *, Auto" Name="TitleBar" Height="{x:Bind TitleBarHeight}">
 			<Border Grid.Column="0" Width="{x:Bind TitleBarLeftPadding}"/>
@@ -30,12 +33,12 @@
 			Background="Transparent"
 			SelectionChanged="onNavigationChanged"
 		>
-			<NavigationView.Resources>
-				<SolidColorBrush
+			<!--NavigationView.Resources>
+				<StaticResource
 					x:Key="NavigationViewContentBackground"
-					Color="{ThemeResource LayerOnAcrylicFillColorDefault}"
+					ResourceKey="LayerOnMicaBaseAltFillColorDefaultBrush"
 				/>
-			</NavigationView.Resources>
+			</NavigationView.Resources-->
 			<NavigationView.MenuItems>
 				<NavigationViewItem Icon="List" x:Uid="MainWindow_MainNavigationView_List" Tag="0" IsSelected="True"/>
 				<NavigationViewItem Icon="Setting" x:Uid="MainWindow_MainNavigationView_Settings" Tag="1"/>

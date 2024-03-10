@@ -24,7 +24,6 @@ namespace winrt::Spacious::implementation {
 			HWND windowHandle;
 			winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropConfiguration
 				systemBackdropConfiguration = nullptr;
-			BackgroundController backgroundController = nullptr;
 			winrt::Microsoft::UI::Xaml::Window::Activated_revoker activatedRevoker;
 			winrt::Microsoft::UI::Xaml::Window::Closed_revoker closedRevoker;
 			winrt::Microsoft::UI::Xaml::FrameworkElement::ActualThemeChanged_revoker themeChangedRevoker;

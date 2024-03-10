@@ -25,6 +25,7 @@ namespace Spacious {
 
 			static bool isValidDate(const int day, const int month, const int year);
 			static Date today();
+			static Date clamped(const int day, const int month, const int year);
 
 			Date(const int day, const int month, const int year);
 			Date(const int index);

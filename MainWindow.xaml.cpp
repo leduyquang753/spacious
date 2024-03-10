@@ -73,47 +73,7 @@ namespace winrt::Spacious::implementation {
 			SetWindowLongPtr(windowHandle, GWLP_WNDPROC, reinterpret_cast<LPARAM>(handleWindowMessage))
 		);
 
-		// Setup acrylic.
-		if (BackgroundController::IsSupported()) {
-			if (DispatcherQueue::GetForCurrentThread() == nullptr && dispatcherQueueController == nullptr) {
-				DispatcherQueueOptions options{sizeof(DispatcherQueueOptions), DQTYPE_THREAD_CURRENT, DQTAT_COM_NONE};
-				::ABI::Windows::System::IDispatcherQueueController *p;
-				winrt::check_hresult(CreateDispatcherQueueController(options, &p));
-				dispatcherQueueController = {p, take_ownership_from_abi};
-
-				systemBackdropConfiguration = SystemBackdropConfiguration();
-				activatedRevoker = Activated(
-					winrt::auto_revoke,
-					[&](auto&&, const WindowActivatedEventArgs &args) {
-						systemBackdropConfiguration.IsInputActive(
-							WindowActivationState::Deactivated != args.WindowActivationState()
-						);
-					}
-				);
-				systemBackdropConfiguration.IsInputActive(true);
-				rootElement = Content().try_as<FrameworkElement>();
-				winrt::check_bool(rootElement);
-				themeChangedRevoker = rootElement.ActualThemeChanged(winrt::auto_revoke,
-					[&](auto&&, auto&&) {
-						systemBackdropConfiguration.Theme(getBackdropTheme(rootElement.ActualTheme()));
-						setCaptionButtonColors();
-					}
-				);
-				systemBackdropConfiguration.Theme(getBackdropTheme(rootElement.ActualTheme()));
-				
-				backgroundController = BackgroundController();
-				backgroundController.SetSystemBackdropConfiguration(systemBackdropConfiguration);
-				backgroundController.AddSystemBackdropTarget(
-					try_as<ICompositionSupportsSystemBackdrop>()
-				);
-			}
-		}
-
 		closedRevoker = Closed(winrt::auto_revoke, [&](auto&&, auto&&) {
-			if (backgroundController != nullptr) {
-				backgroundController.Close();
-				backgroundController = nullptr;
-			}
 			if (dispatcherQueueController != nullptr) {
 				dispatcherQueueController.ShutdownQueueAsync();
 				dispatcherQueueController = nullptr;

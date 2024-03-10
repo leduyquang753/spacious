@@ -70,7 +70,10 @@
 							Value="1"
 							ValueChanged="onRecurringAmountChange"
 						/>
-						<ComboBox x:Name="RecurringUnit" SelectedIndex="0">
+						<ComboBox
+							x:Name="RecurringUnit" SelectedIndex="0"
+							SelectionChanged="onRecurringUnitChange"
+						>
 							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Days"/>
 							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Months"/>
 							<ComboBoxItem x:Uid="ReminderDetailsPage_RecurringPeriod_Years"/>

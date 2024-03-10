@@ -273,6 +273,10 @@ namespace winrt::Spacious::implementation {
 		validate();
 	}
 	
+	void ReminderDetailsPage::onRecurringUnitChange(const IInspectable &source, const RoutedEventArgs &args) {
+		validate();
+	}
+	
 	void ReminderDetailsPage::onRevertChanges(const IInspectable &source, const RoutedEventArgs &args) {
 		loadReminderInfo();
 	}

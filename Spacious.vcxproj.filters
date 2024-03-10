@@ -44,9 +44,6 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Filter Include="Foreign">
       <UniqueIdentifier>{6b513f85-7673-4cca-af90-fc1415a9d673}</UniqueIdentifier>
     </Filter>
@@ -65,5 +62,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
   </ItemGroup>
 </Project>

@@ -47,6 +47,13 @@ namespace Spacious {
 		return {cTime.tm_mday, cTime.tm_mon+1, cTime.tm_year+1900};
 	}
 
+	Date Date::clamped(const int day, const int month, const int year) {
+		return {
+			std::min(day, (isLeapYear(year) ? monthDaysLeap : monthDays)[month]),
+			month, year
+		};
+	}
+
 	Date::Date(const int day, const int month, const int year): m_day(day), m_month(month), m_year(year) {
 		if (!isValidDate(day, month, year)) throw InvalidDateException(day, month, year);
 		m_index
